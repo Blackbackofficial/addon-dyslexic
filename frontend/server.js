@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
@@ -16,11 +18,11 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/hi', (req, res) => {
-  res.render('hi', {
-    title: 'About dyslexic',
-  });
-});
+// app.get('/hi', (req, res) => {
+//   res.render('hi', {
+//     title: 'About dyslexic',
+//   });
+// });
 
 app.use(function (err, req, res, next) {
   console.error(err);
