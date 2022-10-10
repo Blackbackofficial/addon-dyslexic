@@ -2,7 +2,7 @@
   width: 100%;
   height: 9rem;
   mask: linear-gradient(black 7rem, transparent);
-  -webkit-mask: linear-gradient(#ed1f1f 111px, #d83b3b00);
+  -webkit-mask: linear-gradient(#ed1f1f 86px, #d83b3b00);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   position: fixed;
@@ -27,10 +27,11 @@ body {
 
 header {
   width: 100%;
-  height: 8rem;
-  position: sticky;
+  height: 6rem;
+  position: fixed;
   top: 0;
-  z-index: 1; }
+  z-index: 1;
+}
   header > div {
     width: calc(100% - 3rem);
     max-width: 1000px;
@@ -64,7 +65,7 @@ main, #folders {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-gap: 1.5rem;
-  padding-top: 5%;
+  padding-top: 12%;
 }
 
 .col-title {
