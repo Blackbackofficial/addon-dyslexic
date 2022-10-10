@@ -137,22 +137,24 @@ footer {
 }
 .element-1 {
   position: relative;
+  padding-top: 16px;
   left: 20px;
   float: left;
 }
 .element-2 {
   position: relative;
+  padding-top: 16px;
   left: 64px;
   float: right;
 }
 .browser {
   max-width: 81px;
-  width: 81px;
+  width: 61px;
   float: left;
 }
 .browser-text {
   float: right;
-  padding-top: 30px;
+  padding-top: 16px;
   padding-left: 20px;
   font-size: 18px;
   text-decoration: underline #8f0011;
