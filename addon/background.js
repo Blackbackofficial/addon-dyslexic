@@ -3,8 +3,11 @@ var /**
      */
     fonts = {
         'PT Mono': 'https://fonts.googleapis.com/css2?family=PT+Mono&display=swap',
+        'Atma':'https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap',
+
         'OpenDyslexic': 'https://github.com/Blackbackofficial/addon-dyslexic/blob/vr009/init/fonts/OpenDyslexic-Bold.otf?raw=true',
-        'OpenDyslexic2': 'http://localhost:8100/OpenDyslexic.css', 'Atma':'https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap',
+        'OpenDyslexic2': 'http://localhost:8080/OpenDyslexic-Bold.otf',
+        'OpenDyslexic3': 'http://localhost:8080/OpenDyslexic.css',
     },
     selectors = {
         code: '*',
@@ -14,6 +17,7 @@ var /**
 // add a listener to tabs.onUpdated event
 chrome.tabs.onUpdated.addListener(function (tabId, info) {
     // if the tab is completely loaded
+    console.log("Start")
     if (info.status === 'complete') {
         chrome.storage.sync.get(['gt_font_family', 'gt_font_weight', 'gt_font_link', 'gt_indent_guides'], function (data) {
             if (Object.keys(data).length > 0) {
@@ -51,6 +55,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, info) {
  * @returns true
  */
 function applyStyles(selector, styles) {
+    console.log("Apply")
     const css = stylesToCss(styles);
     chrome.tabs.insertCSS({
         code: `${selector} {${css}}`,
@@ -81,6 +86,7 @@ function stylesToCss(styles) {
  */
 function applyFontFamily(family) {
     applyStyles(selectors.code, { 'font-family': family });
+    console.log("SENT")
     chrome.extension.sendMessage({
         type: 'loadFont',
         font: {
