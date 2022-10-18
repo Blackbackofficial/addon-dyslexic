@@ -5,9 +5,8 @@ var /**
         'PT Mono': 'https://fonts.googleapis.com/css2?family=PT+Mono&display=swap',
         'Atma':'https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap',
 
-        'OpenDyslexic': 'https://github.com/Blackbackofficial/addon-dyslexic/blob/vr009/init/fonts/OpenDyslexic-Bold.otf?raw=true',
-        'OpenDyslexic2': 'http://localhost:8080/OpenDyslexic-Bold.otf',
-        'OpenDyslexic3': 'http://localhost:8080/OpenDyslexic.css',
+        'OpenDyslexic': 'chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexic.css',
+        // 'OpenDyslexic': 'http://localhost:8080/OpenDyslexic.css',
     },
     selectors = {
         code: '*',
@@ -17,9 +16,9 @@ var /**
 // add a listener to tabs.onUpdated event
 chrome.tabs.onUpdated.addListener(function (tabId, info) {
     // if the tab is completely loaded
-    console.log("Start")
     if (info.status === 'complete') {
         chrome.storage.sync.get(['gt_font_family', 'gt_font_weight', 'gt_font_link', 'gt_indent_guides'], function (data) {
+            console.log("Start")
             if (Object.keys(data).length > 0) {
                 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
                     chrome.tabs.sendMessage(tabs[0].id, {
@@ -40,6 +39,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, info) {
         // Intercept the load font message from the popup script
         // and resend the same request to the content script
         chrome.runtime.onMessage.addListener(function (request) {
+            console.log("Start2")
             if (request.type === 'loadFont') {
                 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
                     chrome.tabs.sendMessage(tabs[0].id, request);
@@ -81,12 +81,11 @@ function stylesToCss(styles) {
 }
 
 /**
- * Applies the giving font family to the html github code container
+ * Applies the giving font family to the html
  * @param {String} family
  */
 function applyFontFamily(family) {
     applyStyles(selectors.code, { 'font-family': family });
-    console.log("SENT")
     chrome.extension.sendMessage({
         type: 'loadFont',
         font: {
