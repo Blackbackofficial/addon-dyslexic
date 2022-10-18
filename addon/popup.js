@@ -21,10 +21,9 @@ const /**
     fontSelect = document.querySelector('#font_select')
 
 
-var slider = document.getElementById('slider');
-var line_height_input = document.getElementById('line_height_input');
-var output = document.getElementById('output');
-var clear_btn = document.getElementById('clear_btn');
+    slider = document.querySelector('#slider');
+    output = document.querySelector('#output');
+    clear_btn = document.querySelector('#clear_btn');
 
 
 // popup document content loaded
@@ -33,6 +32,10 @@ addEvent(document, 'DOMContentLoaded', function () {
     addSelectsFonts();
     fillFontsDrodown();
     updateUIFromStorage();
+
+    input_listener(slider, slider_line_height);
+    input_listener(slider, updateOutput);
+    click_listener(clear_btn, clear_style);
 });
 
 /**
@@ -83,14 +86,6 @@ function initEvents() {
         var checked = event.target.checked;
         checked ? hideIndentGuides() : showIndentGuides();
         chrome.storage.sync.set({ gt_indent_guide: !checked });
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log(1)
-        input_listener(slider, slider_line_height);
-        input_listener(slider, updateOutput);
-        input_listener(line_height_input, slider_line_height_input);
-        click_listener(clear_btn, clear_style);
     });
 }
 
