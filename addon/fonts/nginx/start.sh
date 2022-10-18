@@ -1,3 +1,3 @@
 #!/bin/bash
-
-docker run --name fonts_server -d fonts_server -p 8080:8080
+docker build -t fonts_static .
+docker run --name fonts_static -p 8080:8080 -t fonts_static
