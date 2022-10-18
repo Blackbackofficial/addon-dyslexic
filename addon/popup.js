@@ -18,6 +18,7 @@ const /**
     weightsDatalist = document.querySelector('#fonts_weight_list'),
     weightsDatalistInput = document.querySelector('#fonts_weight'),
     IndentGuidesCheckbox = document.querySelector('#indentGuides');
+    fontSelect = document.querySelector('#font_select')
 
 
 var slider = document.getElementById('slider');
@@ -29,6 +30,7 @@ var clear_btn = document.getElementById('clear_btn');
 // popup document content loaded
 addEvent(document, 'DOMContentLoaded', function () {
     initEvents();
+    addSelectsFonts();
     fillFontsDrodown();
     updateUIFromStorage();
 });
@@ -44,6 +46,22 @@ function initEvents() {
 
         applyFontFamily(fontSelected);
 
+        chrome.storage.sync.set({
+            gt_font_family: fontSelected,
+            gt_font_link: fonts[fontSelected]
+        });
+
+        if (!isLocalFont) {
+            fillWeightsDropdown(fontsDatalistInput.value);
+            updateSelectedWeight(oldSelectedWeight);
+        }
+    });
+
+    document.getElementById("font_select").addEventListener('change', (event) => {
+        const oldSelectedWeight = weightsDatalistInput.value,
+            fontSelected = event.target.value,
+            isLocalFont = Object.keys(fonts).indexOf(fontSelected) === -1;
+        applyFontFamily(fontSelected);
         chrome.storage.sync.set({
             gt_font_family: fontSelected,
             gt_font_link: fonts[fontSelected]
@@ -87,6 +105,20 @@ function fillFontsDrodown() {
         }
 
         createOption(fontName, fontName, fontsDatalist);
+    }
+}
+
+/**
+ * Populate options of the select font families dropdown
+ */
+function addSelectsFonts() {
+    const sortedFonts = sortObject(fonts);
+    for (var fontName in sortedFonts) {
+        if (!Object.prototype.hasOwnProperty.call(fonts, fontName)) {
+            continue;
+        }
+
+        createOption(fontName, fontName, fontSelect);
     }
 }
 
