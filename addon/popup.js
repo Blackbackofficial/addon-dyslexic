@@ -27,6 +27,7 @@ const /**
     clear_btn = document.querySelector('#clear_btn');
     radiohld = document.querySelector('#pic_hider');
     radios = document.querySelectorAll('input[type=radio][name="pic"]');
+    ruler = document.querySelector('#rulerGuides');
 
 
 
@@ -41,6 +42,8 @@ addEvent(document, 'DOMContentLoaded', function () {
     input_listener(slider, updateOutput);
     click_listener(clear_btn, clear_style);
     pic_listener(radios, changeHandler);
+    init_clicker_listener(ruler, initRuler);
+    init_clicker_listener(ruler, changeRuler);
 });
 
 
@@ -317,4 +320,31 @@ function pic_listener(radios, func) {
     Array.prototype.forEach.call(radios, function(radio) {
         radio.addEventListener('change', func);
     });
+}
+
+
+function init_clicker_listener(identifier, func) {
+    identifier.addEventListener('change', function() {
+        func();
+    });
+}
+
+function changeRuler(){
+    chrome.tabs.executeScript(null,
+        {code:"var paras =  document.querySelector('#rulerItem');"}
+    );
+};
+
+
+function initRuler(){
+    if (ruler.checked) {
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            var activeTab = tabs[0];
+            var activeTabId = activeTab.id; // or do whatever you need
+            chrome.tabs.executeScript(activeTabId, {
+                file: 'inject.js'
+            });
+        });
+    }
+
 }

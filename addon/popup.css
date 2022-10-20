@@ -184,3 +184,14 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
 .picHider:not(:hover) {
     opacity: 0 !important;
 }
+
+.ruler {
+    colour: "#55cc551c";
+    lineColour: "#33aa3334";
+    scale: 1.05;
+    shadow: 0.08;
+    key: "r";
+    keyCtrl: true;
+    keyAlt: true;
+    keyShift: false;
+}
