@@ -180,3 +180,7 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     background: #00cd97;
 }
 
+
+.picHider:not(:hover) {
+    opacity: 0 !important;
+}

@@ -19,11 +19,15 @@ const /**
     weightsDatalistInput = document.querySelector('#fonts_weight'),
     IndentGuidesCheckbox = document.querySelector('#indentGuides');
     fontSelect = document.querySelector('#font_select')
+    //picSelect = document.querySelector('#pic-hider')
 
 
     slider = document.querySelector('#slider');
     output = document.querySelector('#output');
     clear_btn = document.querySelector('#clear_btn');
+    radiohld = document.querySelector('#pic_hider');
+    radios = document.querySelectorAll('input[type=radio][name="pic"]');
+
 
 
 // popup document content loaded
@@ -36,12 +40,16 @@ addEvent(document, 'DOMContentLoaded', function () {
     input_listener(slider, slider_line_height);
     input_listener(slider, updateOutput);
     click_listener(clear_btn, clear_style);
+    pic_listener(radios, changeHandler);
 });
+
+
 
 /**
  * Binding the necessary events to popup DOM elements
  */
 function initEvents() {
+
     addEvent(fontsDatalistInput, 'input', function () {
         const oldSelectedWeight = weightsDatalistInput.value,
             fontSelected = fontsDatalistInput.value,
@@ -80,6 +88,12 @@ function initEvents() {
         var selectedWeight = weightsDatalistInput.value;
         applyFontWeight(selectedWeight);
         chrome.storage.sync.set({ gt_font_weight: selectedWeight });
+    });
+
+    addEvent(IndentGuidesCheckbox, 'change', function (event) {
+        var checked = event.target.checked;
+        checked ? hideIndentGuides() : showIndentGuides();
+        chrome.storage.sync.set({ gt_indent_guide: !checked });
     });
 
     addEvent(IndentGuidesCheckbox, 'change', function (event) {
@@ -268,5 +282,39 @@ function input_listener(identifier, func) {
 function click_listener(identifier, func) {
     identifier.addEventListener('click', function() {
         func();
+    });
+}
+
+
+function changeHandler() {
+    switch (this.value){
+        case "1":
+            chrome.tabs.executeScript(null,
+                {code:"var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++)" +
+                        "{paras[i].classList.add('picHider');}"}
+            );
+            break
+        case "2":
+            chrome.tabs.executeScript(null,
+                {code:"var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++) " +
+                        "{paras[i].setAttribute('style', 'border: dashed green !important');}"}
+            );
+            break
+        case "3":
+            chrome.tabs.executeScript(null,
+                {code:"var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++)" +
+                        "{paras[i].classList.add('picHider');}"}
+            );
+            break
+
+    }
+   //alert(this.value)
+}
+
+
+function pic_listener(radios, func) {
+
+    Array.prototype.forEach.call(radios, function(radio) {
+        radio.addEventListener('change', func);
     });
 }
