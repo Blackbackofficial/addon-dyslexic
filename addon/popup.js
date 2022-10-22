@@ -300,13 +300,13 @@ function changeHandler() {
         case "2":
             chrome.tabs.executeScript(null,
                 {code:"var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++) " +
-                        "{paras[i].setAttribute('style', 'border: dashed green !important');}"}
+                        "{paras[i].classList.remove('picHider');paras[i].classList.remove('picFiller');}"}
             );
             break
         case "3":
             chrome.tabs.executeScript(null,
                 {code:"var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++)" +
-                        "{paras[i].classList.add('picHider');}"}
+                        "{paras[i].classList.remove('picHider');paras[i].classList.add('picFiller');}"}
             );
             break
 

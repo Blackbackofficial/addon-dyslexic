@@ -185,6 +185,10 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     opacity: 0 !important;
 }
 
+.picFiller:not(:hover){
+    filter: contrast(0) sepia(100%) hue-rotate(116deg) brightness(1.4) saturate(0.28) !important;
+}
+
 .ruler {
     colour: "#55cc551c";
     lineColour: "#33aa3334";
