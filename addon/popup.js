@@ -304,10 +304,13 @@ function changeHandler() {
             );
             break
         case "3":
-            chrome.tabs.executeScript(null,
-                {code:"var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++)" +
-                        "{paras[i].classList.remove('picHider');paras[i].classList.add('picFiller');}"}
-            );
+            chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+                var activeTab = tabs[0];
+                var activeTabId = activeTab.id; // or do whatever you need
+                chrome.tabs.executeScript(activeTabId, {
+                    file: 'inject-filler.js'
+                });
+            });
             break
 
     }
@@ -334,7 +337,6 @@ function changeRuler(){
         {code:"var paras =  document.querySelector('#rulerItem');"}
     );
 };
-
 
 function initRuler(){
     if (ruler.checked) {
