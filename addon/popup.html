@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head class="all-item">
     <title>Popup</title>
     <link rel="stylesheet" type="text/css" href="./popup.css" />
 </head>
 
 <body>
-<form>
+<form class="form-class all-item">
     <h1 class="title">
         <a>Dyslexic Helper</a>
     </h1>
 
-    <form>
+    <form class="form-class all-item">
         <p class="input-field control"><select id="font_select">
         </select></p>
     </form>
 
-    <div class="input-field">
+    <div class="input-field all-item">
         <input id="font_family" class="control" list="font_family_list">
         <datalist id="font_family_list">
         </datalist>
     </div>
 
-    <div class="input-field">
+    <div class="input-field all-item">
         <input id="fonts_weight" class="control" list="fonts_weight_list">
         <datalist id="fonts_weight_list">
         </datalist>
     </div>
 
-    <div class="checkbox-field">
+    <div class="checkbox-field all-item">
         <input type="checkbox" id="indentGuides" class="control" />
         <label for="indentGuides" class="label">Hide indentation guides</label>
     </div>
@@ -57,22 +57,21 @@
     <output for="slider" id="output">1</output>
 
     <p class="text_center">
-        <button id="clear_btn">Restore default</button>
+        <button id="clear_btn" class="button-class-1 button-class-2">Restore default</button>
     </p>
     <div style="display: none;">
-        <button id="line_height_1_0">1</button>
-        <button id="line_height_1_5">1.5</button>
-        <button id="line_height_2_0">2lineheight</button>
+        <button id="line_height_1_0" class="button-class-1 button-class-2">1</button>
+        <button id="line_height_1_5" class="button-class-1 button-class-2">1.5</button>
+        <button id="line_height_2_0" class="button-class-1 button-class-2">2lineheight</button>
         <p>Learn more at <a href="https://rawgit.com/" target="_blank">RawGit.com</a></p>
     </div>
-    <hr>
 </div>
 <!-- new func -->
 
-<div id="pic_hider">
-    <input type="radio" name="pic" id="1" value="1">Скрыть
-    <input type="radio" name="pic" id="2"  value="2">Дефолт
-    <input type="radio" name="pic" id="3" value="3">Покрасить
+<div id="pic_hider" class="display-modes">
+    <input type="radio" name="pic" id="1" value="1">Hide
+    <input type="radio" name="pic" id="2"  value="2">Default
+    <input type="radio" name="pic" id="3" value="3">Paint
 </div>
 
 <div class="checkbox-field">
