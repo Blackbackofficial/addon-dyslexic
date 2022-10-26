@@ -28,6 +28,17 @@
         <datalist id="fonts_weight_list">
         </datalist>
     </div>
+    <input type="range" min="100" max="700" value="100" id="slider_font_weight" step="100" list="slider_settings_font_weight">
+    <datalist id="slider_settings_font_weight">
+        <option>100</option>
+        <option>200</option>
+        <option>300</option>
+        <option>400</option>
+        <option>500</option>
+        <option>600</option>
+        <option>700</option>
+    </datalist>
+    <output for="slider" id="output_font_weight">100</output>
 
     <div class="checkbox-field all-item">
         <input type="checkbox" id="indentGuides" class="control" />

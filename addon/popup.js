@@ -21,6 +21,8 @@ const /**
     fontSelect = document.querySelector('#font_select')
     //picSelect = document.querySelector('#pic-hider')
 
+    slider_font_weight = document.querySelector('#slider_font_weight');
+    output_font_weight = document.querySelector('#output_font_weight');
 
     slider = document.querySelector('#slider');
     output = document.querySelector('#output');
@@ -37,6 +39,9 @@ addEvent(document, 'DOMContentLoaded', function () {
     addSelectsFonts();
     fillFontsDrodown();
     updateUIFromStorage();
+
+    input_listener(slider_font_weight, updateFontWeightOutput);
+    input_listener(slider_font_weight, slider_line_weight);
 
     input_listener(slider, slider_line_height);
     input_listener(slider, updateOutput);
@@ -87,8 +92,15 @@ function initEvents() {
         }
     });
 
-    addEvent(weightsDatalistInput, 'input', function () {
-        var selectedWeight = weightsDatalistInput.value;
+    // addEvent(weightsDatalistInput, 'input', function () {
+    //     var selectedWeight = weightsDatalistInput.value;
+    //     applyFontWeight(selectedWeight);
+    //     chrome.storage.sync.set({ gt_font_weight: selectedWeight });
+    // });
+
+    addEvent(slider_font_weight, 'change', function (event) {
+        console.log("HEREEEEEE", slider_font_weight.value)
+        var selectedWeight = slider_font_weight.value;
         applyFontWeight(selectedWeight);
         chrome.storage.sync.set({ gt_font_weight: selectedWeight });
     });
@@ -229,6 +241,9 @@ function sortObject(obj) {
     }, {});
 }
 
+function updateFontWeightOutput() {
+    output_font_weight.value = slider_font_weight.value;
+}
 
 function updateOutput() {
     output.value = slider.value;
@@ -258,6 +273,13 @@ function slider_line_height () {
         {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-height:" + slider.value + " !important');}"}
     );
     clearLineHeightInput();
+}
+
+function slider_line_weight () {
+    console.log(slider_font_weight.value)
+    chrome.tabs.executeScript(null,
+        {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-weight:" + slider_font_weight.value + " !important');}"}
+    );
 }
 
 function slider_line_height_input () {
