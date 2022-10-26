@@ -183,3 +183,7 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     margin-inline: 3em;
     margin-bottom: 2em;
 }
+
+.display-special {
+    display: none;
+}
