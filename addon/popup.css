@@ -179,9 +179,10 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
 }
 
 .display-modes {
-    display: inline-block;
-    margin-inline: 3em;
-    margin-bottom: 2em;
+    text-align: center;
+    /* center checkbox horizontally */
+    vertical-align: middle;
+    margin-bottom: 1em;
 }
 
 .display-special {
@@ -189,6 +190,7 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
 }
 
 .select-font-pos {
-    margin-left: 2em;
-    margin-right: 2em;
+    text-align: center;
+    /* center checkbox horizontally */
+    vertical-align: middle;
 }
