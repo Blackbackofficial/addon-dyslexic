@@ -6,6 +6,8 @@ var /**
         'Atma':'https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap',
 
         'OpenDyslexic': 'chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexic.css',
+        'SylexiadSansThin': 'chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/SylexiadSansThin.css',
+        'SylexiadSerifThin': 'chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/SylexiadSerifThin.css',
         // 'OpenDyslexic': 'http://localhost:8080/OpenDyslexic.css',
     },
     selectors = {
