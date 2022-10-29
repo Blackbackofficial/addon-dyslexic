@@ -12,7 +12,7 @@
             data, length;
 
         // return the base colour for non-compliant browsers
-        if (!context) { alert('Your browser does not support CANVAS'); return rgb; }
+        if (!context) { return rgb; }
 
         // set the height and width of the canvas element to that of the image
         var height = canvas.height = img.naturalHeight || img.offsetHeight || img.height,
@@ -23,8 +23,6 @@
         try {
             data = context.getImageData(0, 0, width, height);
         } catch(e) {
-            // catch errors - usually due to cross domain security issues
-            alert(e);
             return rgb;
         }
 
@@ -323,7 +321,7 @@
 
     'use strict';
     var paras = document.getElementsByTagName('img');
-
+    console.log(paras.length)
     for (let i = 0; i < paras.length; i++)
     {
         //alert("hi")
@@ -336,11 +334,34 @@
         const result = solver.solve();
         paras[i].classList.remove('picHider');
         paras[i].classList.add('picFiller'+i);
-        console.log(result.filter)
+        paras[i].classList.add('picChecker');
 
         let rule = `.picFiller${i}:not(:hover) {${result.filter}`
         style.sheet.insertRule(rule);
     }
+
+
+    window.addEventListener("scroll", function(ev){
+        var paras = document.getElementsByTagName('img');
+
+        for (let i = 0; i < paras.length; i++)
+        {
+            if (paras[i].classList.contains("picChecker")){
+                continue;
+            }
+            const color = new Color(Math.floor(Math.random() * 255),
+                Math.floor(Math.random() * 255), Math.floor(Math.random() * 255));
+            //alert(avg[0]);
+            const solver = new Solver(color);
+            const result = solver.solve();
+            paras[i].classList.add('picFiller'+i);
+            paras[i].classList.add('picChecker');
+
+            let rule = `.picFiller${i}:not(:hover) {${result.filter}`
+            style.sheet.insertRule(rule);
+        }
+
+    });
 
 
 })();

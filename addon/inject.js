@@ -12,19 +12,21 @@
     }
     // quick options
     const conf = {
-        colour: "rgba(239,179,200,0.47)",
+        colour: "rgb(206,195,195)",
         lineColour: "rgb(138,103,114)", // colour of the bottom edge of the bar
         scale: 1.05, // how many times the text's line-height should the bar's height be
-        shadow: 0.08, // opacity of the bar's shadow (0 to 1)
+        shadow: 0.1, // opacity of the bar's shadow (0 to 1)
         key: "r", // toggle key
         keyCtrl: true, // toggle key requires ctrl?
         keyAlt: true, // toggle key requires alt?
         keyShift: false, // toggle key requires shift?
-    };
+        mixBlendMode: "difference",
+    }
 
 
     const bar = document.createElement("div");
     bar.setAttribute('class','rulerItem')
+    bar.setAttribute('style','mix-blend-mode: exclusion;')
     let visible = true;
 
     const styles = {
