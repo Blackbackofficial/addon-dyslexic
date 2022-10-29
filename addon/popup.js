@@ -1,4 +1,5 @@
-const /**
+const
+    /**
      * variables from background
      */
     background = chrome.extension.getBackgroundPage(),
@@ -186,9 +187,15 @@ function insertPreviousValues(data) {
     // font
     fontSelect.value = data.gt_font_family;
     // weight
+    if (data.gt_font_weight === undefined) {
+        slider_font_weight.value, output_font_weight.value = 100
+    }
     slider_font_weight.value = data.gt_font_weight;
     output_font_weight.value = data.gt_font_weight
     // height
+    if (data.gt_font_height === undefined) {
+        slider.value, output.value = 1
+    }
     slider.value = data.gt_font_height;
     output.value = data.gt_font_height;
 }
