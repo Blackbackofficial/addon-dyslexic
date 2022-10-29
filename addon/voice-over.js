@@ -5,7 +5,7 @@
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 
-    alert(selection)
+    console.log(selection)
     const fetchSong = async () => {
         const response = await fetch(`https://voice.mcs.mail.ru/tts?text=${selection}&encoder=mp3`, {
             method: 'GET',
@@ -16,26 +16,26 @@
             credentials: 'include',
         });
         let result = await response;
-        alert('HERE')
-        alert(result.status)
+        console.log('HERE')
+        console.log(result.status)
         return result.arrayBuffer();
     };
 
     fetchSong().then(
         (audio) => {
-            alert('music')
-            alert(audio.byteLength)
+            console.log('music')
+            console.log(audio.byteLength)
             // вопросы к этому куску
             // const ctx = new AudioContext();
             // Audio(url)
             const blob = new Blob([audio], { type: 'audio/mp3' })
-            alert('blob')
+            console.log('blob')
             const url = URL.createObjectURL(blob);
-            alert(url)
+            console.log(url)
             const playSound = new Audio(url);
-            playSound.play().then(a => alert('then')).catch(e => alert(e));
+            playSound.play().then(a => console.log('then')).catch(e => console.log(e));
 
         }
-    ).catch(e => alert(e))
+    ).catch(e => console.log(e))
 
 }());
