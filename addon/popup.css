@@ -1,0 +1,196 @@
+.all-item {
+    margin-inline: 0;
+    padding-inline: 0;
+    box-sizing: border-box;
+}
+
+.form-class{
+    width: 270px;
+    background-color: #fff;
+    padding-bottom: 15px;
+}
+
+.title {
+    text-align: left;
+    background-color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.title img.logo {
+    width: 100%;
+}
+
+.title span {
+    font-size: 24px;
+    color: #222;
+    margin-left: 10px;
+}
+
+.input-field,
+.checkbox-field {
+    margin-bottom: 15px;
+    padding: 0 8px;
+}
+
+.input-field .label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.checkbox-field .control {
+    /*margin-right: 5px;*/
+}
+
+.checkbox-field .label,
+.checkbox-field .control {
+    vertical-align: middle;
+}
+
+.input-field .label::first-letter {
+    text-transform: uppercase;
+}
+
+.input-field .control {
+    width: 100%;
+    height: 2em;
+}
+
+.input-field select.control {
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.input-field select.control:focus {
+    border-color: #74b9ff;
+}
+
+.apply-btn {
+    width: 100%;
+    background-color: rgb(9 132 227);
+    padding: 12px 20px;
+    color: rgb(255 255 255);
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    margin-top: 35px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+.apply-btn:hover {
+    opacity: 0.8;
+}
+
+/*----------- buttons and p's -------------*/
+.text_center {text-align: center;}
+
+.button-class-2 {
+    text-align: center;
+    width: auto;
+    display: inline-block;
+    margin: 10px auto;
+    padding: 10px 15px;
+    box-shadow: none;
+    background:white;
+    border: 1px solid #00cd97;
+    color: #00cd97;
+    border-radius: 500px;
+    cursor: pointer;
+}
+
+.button-class-1:hover {
+    background:#00cd97;
+    border: 1px solid #00cd97;
+    color: white;
+}
+
+.manual_entry {text-align: center;}
+p input {display: inline; width:30px; padding: 10px; margin-bottom: 0; color:#00cd97;text-align: center;}
+input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display: inline-block;
+    vertical-align: middle;}
+#output {width:10%; text-align: center;display: inline-block;}
+
+/*----------- bottom link -------------*/
+.site_link {text-align: center; display: block;}
+.site_link img {vertical-align: middle;}
+.site_link span {
+    color:#cccccc;
+    vertical-align: middle;}
+
+
+/*----------- Slider -------------*/
+[type=range] {
+    -webkit-appearance: none;
+    margin: 6px 0 12px;
+}
+[type=range]:focus {
+    outline: none;
+}
+[type=range]::-webkit-slider-runnable-track {
+    width: 70%;
+    height: 6px;
+    cursor: pointer;
+    transition: all .2s ease;
+    box-shadow: 0 0 0 #222, 0 0 0 #2f2f2f;
+    background: #00cd97;
+    border: 1px solid #00cd97;
+    border-radius: 5px;
+}
+[type=range]::-webkit-slider-thumb {
+    box-shadow: 0 0 1px white, 0 0 0 white;
+    border: 1px solid #32aa5a;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: #00cd97;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -10px;
+}
+[type=range]:focus::-webkit-slider-runnable-track {
+    background: #00cd97;
+}
+
+
+.picHider:not(:hover) {
+    opacity: 0 !important;
+}
+
+.picFiller:not(:hover){
+    filter: contrast(0) sepia(100%) brightness(1.4) saturate(0.28) hue-rotate(116deg)  !important;
+}
+
+.ruler {
+    colour: "#55cc551c";
+    lineColour: "#33aa3334";
+    scale: 1.05;
+    shadow: 0.08;
+    key: "r";
+    keyCtrl: true;
+    keyAlt: true;
+    keyShift: false;
+}
+
+.display-modes {
+    text-align: center;
+    /* center checkbox horizontally */
+    vertical-align: middle;
+    margin-bottom: 1em;
+}
+
+.display-special {
+    display: none;
+}
+
+.select-font-pos {
+    text-align: center;
+    /* center checkbox horizontally */
+    vertical-align: middle;
+}
