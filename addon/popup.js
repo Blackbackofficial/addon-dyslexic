@@ -96,27 +96,33 @@ function initEvents() {
         }
     });
 
-    // addEvent(weightsDatalistInput, 'input', function () {
-    //     var selectedWeight = weightsDatalistInput.value;
-    //     applyFontWeight(selectedWeight);
-    //     chrome.storage.sync.set({ gt_font_weight: selectedWeight });
-    // });
-
-    addEvent(slider_font_weight, 'change', function (event) {
-        console.log("HEREEEEEE", slider_font_weight.value)
-        var selectedWeight = slider_font_weight.value;
+    addEvent(weightsDatalistInput, 'input', function () {
+        let selectedWeight = weightsDatalistInput.value;
         applyFontWeight(selectedWeight);
         chrome.storage.sync.set({ gt_font_weight: selectedWeight });
     });
 
+    addEvent(slider_font_weight, 'change', function (event) {
+        console.log("HEREEEEEE", slider_font_weight.value)
+        let selectedWeight = slider_font_weight.value;
+        applyFontWeight(selectedWeight);
+        chrome.storage.sync.set({ gt_font_weight: selectedWeight });
+    });
+
+    addEvent(slider, 'change', function (event) {
+        let selectedHeight = slider.value;
+        applyFontWeight(selectedHeight);
+        chrome.storage.sync.set({ gt_font_height: selectedHeight });
+    });
+
     addEvent(IndentGuidesCheckbox, 'change', function (event) {
-        var checked = event.target.checked;
+        let checked = event.target.checked;
         checked ? hideIndentGuides() : showIndentGuides();
         chrome.storage.sync.set({ gt_indent_guide: !checked });
     });
 
     addEvent(IndentGuidesCheckbox, 'change', function (event) {
-        var checked = event.target.checked;
+        let checked = event.target.checked;
         checked ? hideIndentGuides() : showIndentGuides();
         chrome.storage.sync.set({ gt_indent_guide: !checked });
     });
@@ -127,7 +133,7 @@ function initEvents() {
  */
 function fillFontsDrodown() {
     const sortedFonts = sortObject(fonts);
-    for (var fontName in sortedFonts) {
+    for (let fontName in sortedFonts) {
         if (!Object.prototype.hasOwnProperty.call(fonts, fontName)) {
             continue;
         }
@@ -141,7 +147,7 @@ function fillFontsDrodown() {
  */
 function addSelectsFonts() {
     const sortedFonts = sortObject(fonts);
-    for (var fontName in sortedFonts) {
+    for (let fontName in sortedFonts) {
         if (!Object.prototype.hasOwnProperty.call(fonts, fontName)) {
             continue;
         }
@@ -154,13 +160,15 @@ function addSelectsFonts() {
  * Get font settings from storage and initialize the select dropdowns
  */
 function updateUIFromStorage() {
-    chrome.storage.sync.get(['gt_font_family', 'gt_font_weight', 'gt_indent_guide'], function (data) {
+    chrome.storage.sync.get(['gt_font_family', 'gt_font_weight', 'gt_indent_guide', 'gt_font_height'], function (data) {
         if (Object.keys(data).length > 0) {
             const isLocalFont = Object.keys(fonts).indexOf(data.gt_font_family) === -1;
 
             // make the restored font family & weight selected
             fontsDatalistInput.value = data.gt_font_family;
             weightsDatalistInput.value = data.gt_font_weight;
+
+            insertPreviousValues(data);
 
             // update indentation guides checkbox
             IndentGuidesCheckbox.checked = !data.gt_indent_guide;
@@ -171,6 +179,12 @@ function updateUIFromStorage() {
             }
         }
     });
+}
+
+function insertPreviousValues(data) {
+    slider_font_weight.value = data.gt_font_weight;
+    slider.value = data.gt_font_height;
+    fontSelect.value = data.gt_font_family
 }
 
 /**
@@ -194,16 +208,16 @@ function fillWeightsDropdown(family) {
 
     weightsDatalist.innerHTML = '';
 
-    var i = 0;
+    let i = 0;
     try {
         while (i < weights.length) {
-            var weight = weights[i];
+            let weight = weights[i];
             createOption(`${weight} - ${weightsNames[weight]}`, weight, weightsDatalist);
             i++;
         }
     } catch (error) {
         // fonts which return null on weights.length
-        var weight = 400;
+        let weight = 400;
         createOption(`${weight} - ${weightsNames[weight]}`, weight, weightsDatalist);
     }
 }
@@ -213,7 +227,7 @@ function fillWeightsDropdown(family) {
  * @param {String} oldSelectedWeight
  */
 function updateSelectedWeight(oldSelectedWeight) {
-    var option = weightsDatalist.querySelector(`option[value="${oldSelectedWeight}"]`);
+    let option = weightsDatalist.querySelector(`option[value="${oldSelectedWeight}"]`);
     if (option === null) {
         /**
          * The first option was selected and the old font weight isn't supported by
@@ -230,7 +244,7 @@ function updateSelectedWeight(oldSelectedWeight) {
  * Create option element for select dropdown
  */
 function createOption(textContent, value, append) {
-    var option = document.createElement('option');
+    let option = document.createElement('option');
 
     option.textContent = textContent;
     option.value = value;
@@ -268,7 +282,7 @@ function clear_style() {
         {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].style.removeProperty('line-height');}"}
     );
     clearSlider();
-    clearLineHeightInput();
+    // clearLineHeightInput();
 }
 
 function slider_line_height () {
@@ -276,7 +290,7 @@ function slider_line_height () {
     chrome.tabs.executeScript(null,
         {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-height:" + slider.value + " !important');}"}
     );
-    clearLineHeightInput();
+    // clearLineHeightInput();
 }
 
 function slider_line_weight () {
@@ -331,8 +345,8 @@ function changeHandler() {
             break
         case "3":
             chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-                var activeTab = tabs[0];
-                var activeTabId = activeTab.id; // or do whatever you need
+                let activeTab = tabs[0];
+                let activeTabId = activeTab.id; // or do whatever you need
                 chrome.tabs.executeScript(activeTabId, {
                     file: 'inject-filler.js'
                 });
@@ -340,7 +354,6 @@ function changeHandler() {
             break
 
     }
-   //alert(this.value)
 }
 
 
@@ -362,19 +375,18 @@ function changeRuler(){
     chrome.tabs.executeScript(null,
         {code:"var paras =  document.querySelector('#rulerItem');"}
     );
-};
+}
 
 function initRuler(){
     if (ruler.checked) {
         chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-            var activeTab = tabs[0];
-            var activeTabId = activeTab.id; // or do whatever you need
+            let activeTab = tabs[0];
+            let activeTabId = activeTab.id; // or do whatever you need
             chrome.tabs.executeScript(activeTabId, {
                 file: 'inject.js'
             });
         });
     }
-
 }
 
 function initReader(){
@@ -400,8 +412,8 @@ function initVoicer(){
     if (voicer.checked) {
         // to save a state
         chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-            var activeTab = tabs[0];
-            var activeTabId = activeTab.id; // or do whatever you need
+            let activeTab = tabs[0];
+            let activeTabId = activeTab.id; // or do whatever you need
             chrome.tabs.executeScript(activeTabId, {
                 file: 'voice-over.js'
             });
