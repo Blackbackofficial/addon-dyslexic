@@ -5,23 +5,20 @@
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 
+    alert(selection)
     const fetchSong = async () => {
-        var request = new Request({
-            url: `https://voice.mcs.mail.ru/tts?text=${selection}&encoder=mp3`,
+        const response = await fetch(`https://voice.mcs.mail.ru/tts?text=${selection}&encoder=mp3`, {
+            method: 'GET',
             headers: {
-                'Authorization': '2gUfrzWSUSwwoizbQpTh4zhuFQsBn4jeYgNHeS1SoPBDj2Ti4'
+                'Authorization': 'Bearer *'
             },
             redirect: "follow",
             credentials: 'include',
         });
-
-        const xhr = await fetch(request.url, {
-            headers: {
-                'Authorization': '2gUfrzWSUSwwoizbQpTh4zhuFQsBn4jeYgNHeS1SoPBDj2Ti4'
-            },
-        });
-        alert(xhr.status)
-        return xhr.arrayBuffer();
+        let result = await response;
+        alert('HERE')
+        alert(result.status)
+        return result.arrayBuffer();
     };
 
     fetchSong().then(
