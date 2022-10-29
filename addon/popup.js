@@ -30,6 +30,8 @@ const /**
     radiohld = document.querySelector('#pic_hider');
     radios = document.querySelectorAll('input[type=radio][name="pic"]');
     ruler = document.querySelector('#rulerGuides');
+    reader = document.querySelector('#readerMode');
+    voicer = document.querySelector('#voiceMode');
 
 
 
@@ -49,6 +51,8 @@ addEvent(document, 'DOMContentLoaded', function () {
     pic_listener(radios, changeHandler);
     init_clicker_listener(ruler, initRuler);
     init_clicker_listener(ruler, changeRuler);
+    init_clicker_listener(reader, initReader);
+    init_clicker_listener(voicer, initVoicer);
 });
 
 
@@ -371,34 +375,55 @@ function initRuler(){
         chrome.tabs.insertCSS({
             file: 'inject-css.css'
         });
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            var activeTab = tabs[0];
+            var activeTabId = activeTab.id; // or do whatever you need
+            chrome.tabs.executeScript(activeTabId, {
+                file: 'inject.js'
+            });
+        })
+    }
+}
+
+function initReader(){
+    if (reader.checked) {
+
+        chrome.tabs.executeScript({
+            file: 'inject-index.js'
+        });
+
+        // Inject styles
+        chrome.tabs.insertCSS({
+            file: 'inject-css.css'
+        });
 
         // Inject reader script
         chrome.tabs.executeScript(
             {file: 'inject-reader.js'},
         );
+    }
+}
+
+function initVoicer(){
+    if (voicer.checked) {
+
+        chrome.tabs.executeScript({
+            file: 'inject-index.js'
+        });
+
+        // Inject styles
+        chrome.tabs.insertCSS({
+            file: 'inject-css.css'
+        });
 
 
-        /*
         chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-            var activeTab = tabs[0];
-            var activeTabId = activeTab.id; // or do whatever you need
-           /* chrome.tabs.executeScript(activeTabId, {
-                file: 'inject.js'
-            });
-
-
-         */
-
-        /*
-        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-            var activeTab = tabs[0];
-            var activeTabId = activeTab.id; // or do whatever you need
-            chrome.tabs.executeScript(activeTabId, {
-                file: 'voice-over.js'
-            });
+         var activeTab = tabs[0];
+         var activeTabId = activeTab.id; // or do whatever you need
+         chrome.tabs.executeScript(activeTabId, {
+             file: 'voice-over.js'
+         });
         })
-         */
 
     }
-
 }
