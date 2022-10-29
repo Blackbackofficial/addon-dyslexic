@@ -12,7 +12,7 @@
             data, length;
 
         // return the base colour for non-compliant browsers
-        if (!context) { alert('Your browser does not support CANVAS'); return rgb; }
+        if (!context) { return rgb; }
 
         // set the height and width of the canvas element to that of the image
         var height = canvas.height = img.naturalHeight || img.offsetHeight || img.height,
@@ -23,8 +23,6 @@
         try {
             data = context.getImageData(0, 0, width, height);
         } catch(e) {
-            // catch errors - usually due to cross domain security issues
-            alert(e);
             return rgb;
         }
 
