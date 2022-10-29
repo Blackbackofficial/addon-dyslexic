@@ -23,6 +23,7 @@ const /**
 
     slider_font_weight = document.querySelector('#slider_font_weight');
     output_font_weight = document.querySelector('#output_font_weight');
+    slider_settings_font_weight = document.querySelector('#slider_settings_font_weight');
 
     slider = document.querySelector('#slider');
     output = document.querySelector('#output');
@@ -182,9 +183,14 @@ function updateUIFromStorage() {
 }
 
 function insertPreviousValues(data) {
+    // font
+    fontSelect.value = data.gt_font_family;
+    // weight
     slider_font_weight.value = data.gt_font_weight;
+    output_font_weight.value = data.gt_font_weight
+    // height
     slider.value = data.gt_font_height;
-    fontSelect.value = data.gt_font_family
+    output.value = data.gt_font_height;
 }
 
 /**
