@@ -186,7 +186,6 @@ function updateUIFromStorage() {
     chrome.storage.sync.get(IdEvents, function (data) {
         if (Object.keys(data).length > 0) {
             const isLocalFont = Object.keys(fonts).indexOf(data.gt_font_family) === -1;
-            console.log(data.gt_radio_choice);
 
             // make the restored font family & weight selected
             fontsDatalistInput.value = data.gt_font_family;
@@ -211,20 +210,21 @@ function insertPreviousValues(data) {
 
     // weight
     if (data.gt_font_weight === undefined) {
-        slider_font_weight.value, output_font_weight.value = 100
+        slider_font_weight.value, output_font_weight.value = 100;
     }
     slider_font_weight.value = data.gt_font_weight;
-    output_font_weight.value = data.gt_font_weight
+    output_font_weight.value = data.gt_font_weight;
 
     // height
     if (data.gt_font_height === undefined) {
-        slider.value, output.value = 1
+        slider.value, output.value = 1;
     }
     slider.value = data.gt_font_height;
     output.value = data.gt_font_height;
 
     // radioButton
     radiohld.value = data.gt_radio_choice;
+    console.log(data.gt_radio_choice);
 
     // checkBox
     ruler.checked = !data.gt_ruler;
@@ -314,6 +314,8 @@ function updateOutput() {
 
 function clearSlider() {
     slider.value = 1;
+    slider_font_weight.value = 100;
+    output_font_weight.value = 100;
     output.innerHTML = '1';
 }
 
@@ -327,7 +329,6 @@ function clear_style() {
         {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].style.removeProperty('line-height');}"}
     );
     clearSlider();
-    // clearLineHeightInput();
 }
 
 function slider_line_height () {
@@ -335,7 +336,6 @@ function slider_line_height () {
     chrome.tabs.executeScript(null,
         {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-height:" + slider.value + " !important');}"}
     );
-    // clearLineHeightInput();
 }
 
 function slider_line_weight () {
