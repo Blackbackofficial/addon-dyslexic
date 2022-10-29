@@ -321,7 +321,7 @@
 
     'use strict';
     var paras = document.getElementsByTagName('img');
-
+    console.log(paras.length)
     for (let i = 0; i < paras.length; i++)
     {
         //alert("hi")
@@ -334,11 +334,34 @@
         const result = solver.solve();
         paras[i].classList.remove('picHider');
         paras[i].classList.add('picFiller'+i);
-        console.log(result.filter)
+        paras[i].classList.add('picChecker');
 
         let rule = `.picFiller${i}:not(:hover) {${result.filter}`
         style.sheet.insertRule(rule);
     }
+
+
+    window.addEventListener("scroll", function(ev){
+        var paras = document.getElementsByTagName('img');
+
+        for (let i = 0; i < paras.length; i++)
+        {
+            if (paras[i].classList.contains("picChecker")){
+                continue;
+            }
+            const color = new Color(Math.floor(Math.random() * 255),
+                Math.floor(Math.random() * 255), Math.floor(Math.random() * 255));
+            //alert(avg[0]);
+            const solver = new Solver(color);
+            const result = solver.solve();
+            paras[i].classList.add('picFiller'+i);
+            paras[i].classList.add('picChecker');
+
+            let rule = `.picFiller${i}:not(:hover) {${result.filter}`
+            style.sheet.insertRule(rule);
+        }
+
+    });
 
 
 })();
