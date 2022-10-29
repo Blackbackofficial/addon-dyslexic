@@ -397,18 +397,14 @@ function initReader(){
 }
 
 function initVoicer(){
-    document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
-            // to save a state
-            if (voicer.checked) {
-                chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-                 var activeTab = tabs[0];
-                 var activeTabId = activeTab.id; // or do whatever you need
-                 chrome.tabs.executeScript(activeTabId, {
-                     file: 'voice-over.js'
-                 });
-                })
-            }
-        }
-    });
+    if (voicer.checked) {
+        // to save a state
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            var activeTab = tabs[0];
+            var activeTabId = activeTab.id; // or do whatever you need
+            chrome.tabs.executeScript(activeTabId, {
+                file: 'voice-over.js'
+            });
+        })
+    }
 }
