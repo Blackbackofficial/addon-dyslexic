@@ -34,7 +34,9 @@ const
     ruler = document.querySelector('#rulerGuides');
     reader = document.querySelector('#readerMode');
     voicer = document.querySelector('#voiceMode');
-
+    IdEvents = ['gt_font_family', 'gt_font_weight', 'gt_indent_guide',
+        'gt_font_height', 'gt_radio_choice', 'gt_ruler', 'gt_voicer',
+        'gt_reader'];
 
 
 // popup document content loaded
@@ -113,8 +115,27 @@ function initEvents() {
 
     addEvent(slider, 'change', function (event) {
         let selectedHeight = slider.value;
-        applyFontWeight(selectedHeight);
         chrome.storage.sync.set({ gt_font_height: selectedHeight });
+    });
+
+    addEvent(radiohld, 'change', function (event) {
+        let radioChoice = radiohld.value;
+        chrome.storage.sync.set({ gt_radio_choice: radioChoice });
+    });
+
+    addEvent(ruler, 'change', function (event) {
+        var checked = event.target.checked;
+        chrome.storage.sync.set({ gt_ruler: !checked });
+    });
+
+    addEvent(voicer, 'change', function (event) {
+        var checked = event.target.checked;
+        chrome.storage.sync.set({ gt_voicer: !checked });
+    });
+
+    addEvent(reader, 'change', function (event) {
+        var checked = event.target.checked;
+        chrome.storage.sync.set({ gt_reader: !checked });
     });
 
     addEvent(IndentGuidesCheckbox, 'change', function (event) {
@@ -162,18 +183,19 @@ function addSelectsFonts() {
  * Get font settings from storage and initialize the select dropdowns
  */
 function updateUIFromStorage() {
-    chrome.storage.sync.get(['gt_font_family', 'gt_font_weight', 'gt_indent_guide', 'gt_font_height'], function (data) {
+    chrome.storage.sync.get(IdEvents, function (data) {
         if (Object.keys(data).length > 0) {
             const isLocalFont = Object.keys(fonts).indexOf(data.gt_font_family) === -1;
+            console.log(data.gt_radio_choice);
 
             // make the restored font family & weight selected
             fontsDatalistInput.value = data.gt_font_family;
             weightsDatalistInput.value = data.gt_font_weight;
 
-            insertPreviousValues(data);
-
             // update indentation guides checkbox
             IndentGuidesCheckbox.checked = !data.gt_indent_guide;
+
+            insertPreviousValues(data);
 
             if (!isLocalFont) {
                 // fill the weights dropdown
@@ -186,18 +208,28 @@ function updateUIFromStorage() {
 function insertPreviousValues(data) {
     // font
     fontSelect.value = data.gt_font_family;
+
     // weight
     if (data.gt_font_weight === undefined) {
         slider_font_weight.value, output_font_weight.value = 100
     }
     slider_font_weight.value = data.gt_font_weight;
     output_font_weight.value = data.gt_font_weight
+
     // height
     if (data.gt_font_height === undefined) {
         slider.value, output.value = 1
     }
     slider.value = data.gt_font_height;
     output.value = data.gt_font_height;
+
+    // radioButton
+    radiohld.value = data.gt_radio_choice;
+
+    // checkBox
+    ruler.checked = !data.gt_ruler;
+    voicer.checked = !data.gt_voicer;
+    reader.checked = !data.gt_reader;
 }
 
 /**
