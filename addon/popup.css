@@ -115,7 +115,7 @@
 p input {display: inline; width:30px; padding: 10px; margin-bottom: 0; color:#00cd97;text-align: center;}
 input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display: inline-block;
     vertical-align: middle;}
-#output {padding-left: 10px; width:10%; text-align: center;display: inline-block;}
+#output {width:10%; text-align: center;display: inline-block;}
 
 /*----------- bottom link -------------*/
 .site_link {text-align: center; display: block;}
