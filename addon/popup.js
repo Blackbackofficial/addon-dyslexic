@@ -362,13 +362,43 @@ function changeRuler(){
 
 function initRuler(){
     if (ruler.checked) {
+
+        chrome.tabs.executeScript({
+            file: 'inject-index.js'
+        });
+
+        // Inject styles
+        chrome.tabs.insertCSS({
+            file: 'inject-css.css'
+        });
+
+        // Inject reader script
+        chrome.tabs.executeScript(
+            {file: 'inject-reader.js'},
+        );
+
+
+        /*
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            var activeTab = tabs[0];
+            var activeTabId = activeTab.id; // or do whatever you need
+           /* chrome.tabs.executeScript(activeTabId, {
+                file: 'inject.js'
+            });
+
+
+         */
+
+        /*
         chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
             var activeTab = tabs[0];
             var activeTabId = activeTab.id; // or do whatever you need
             chrome.tabs.executeScript(activeTabId, {
-                file: 'inject.js'
+                file: 'voice-over.js'
             });
-        });
+        })
+         */
+
     }
 
 }
