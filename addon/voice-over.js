@@ -9,7 +9,7 @@
         var request = new Request({
             url: `https://voice.mcs.mail.ru/tts?text=${selection}&encoder=mp3`,
             headers: {
-                'Authorization': 'Bearer *'
+                'Authorization': '2gUfrzWSUSwwoizbQpTh4zhuFQsBn4jeYgNHeS1SoPBDj2Ti4'
             },
             redirect: "follow",
             credentials: 'include',
@@ -17,7 +17,7 @@
 
         const xhr = await fetch(request.url, {
             headers: {
-                'Authorization': 'Bearer *'
+                'Authorization': '2gUfrzWSUSwwoizbQpTh4zhuFQsBn4jeYgNHeS1SoPBDj2Ti4'
             },
         });
         alert(xhr.status)

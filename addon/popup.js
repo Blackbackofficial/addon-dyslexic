@@ -398,17 +398,6 @@ function initReader(){
 
 function initVoicer(){
     if (voicer.checked) {
-
-        chrome.tabs.executeScript({
-            file: 'inject-index.js'
-        });
-
-        // Inject styles
-        chrome.tabs.insertCSS({
-            file: 'inject-css.css'
-        });
-
-
         chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
          var activeTab = tabs[0];
          var activeTabId = activeTab.id; // or do whatever you need
@@ -416,6 +405,5 @@ function initVoicer(){
              file: 'voice-over.js'
          });
         })
-
     }
 }
