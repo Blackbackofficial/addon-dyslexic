@@ -279,7 +279,7 @@ function clearLineHeightInput () {
 
 function clear_style() {
     chrome.tabs.executeScript(null,
-        {code:"let paras = document.getElementsByTagName('p');for (let i = 0; i < paras.length; i++) {paras[i].style.removeProperty('line-height');}"}
+        {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].style.removeProperty('line-height');}"}
     );
     clearSlider();
     // clearLineHeightInput();
@@ -288,15 +288,15 @@ function clear_style() {
 function slider_line_height () {
     console.log(slider.value)
     chrome.tabs.executeScript(null,
-        {code:"let paras = document.getElementsByTagName('p');for (let i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-height:" + slider.value + " !important');}"}
+        {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-height:" + slider.value + " !important');}"}
     );
-    clearLineHeightInput();
+    // clearLineHeightInput();
 }
 
 function slider_line_weight () {
     console.log(slider_font_weight.value)
     chrome.tabs.executeScript(null,
-        {code:"let paras = document.getElementsByTagName('p');for (let i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-weight:" + slider_font_weight.value + " !important');}"}
+        {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-weight:" + slider_font_weight.value + " !important');}"}
     );
 }
 
@@ -333,13 +333,13 @@ function changeHandler() {
     switch (this.value){
         case "1":
             chrome.tabs.executeScript(null,
-                {code:"let paras = document.getElementsByTagName('img');for (let i = 0; i < paras.length; i++)" +
+                {code:"var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++)" +
                         "{paras[i].classList.add('picHider');}"}
             );
             break
         case "2":
             chrome.tabs.executeScript(null,
-                {code:"let paras = document.getElementsByTagName('img');for (let i = 0; i < paras.length; i++) " +
+                {code:"var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++) " +
                         "{paras[i].classList.remove('picHider');paras[i].classList.remove('picFiller');}"}
             );
             break
@@ -373,7 +373,7 @@ function init_clicker_listener(identifier, func) {
 
 function changeRuler(){
     chrome.tabs.executeScript(null,
-        {code:"let paras =  document.querySelector('#rulerItem');"}
+        {code:"var paras =  document.querySelector('#rulerItem');"}
     );
 }
 
