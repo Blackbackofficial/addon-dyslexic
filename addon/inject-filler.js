@@ -1,11 +1,10 @@
 (function() {
-
-    var style = document.createElement('style');
+    const style = document.createElement('style');
     document.head.appendChild(style);
     function getAverageColourAsRGB (img) {
-        var canvas = document.createElement('canvas'),
+        let canvas = document.createElement('canvas'),
             context = canvas.getContext && canvas.getContext('2d'),
-            rgb = {r:102,g:102,b:102}, // Set a base colour as a fallback for non-compliant browsers
+            rgb = {r: 102, g: 102, b: 102}, // Set a base colour as a fallback for non-compliant browsers
             pixelInterval = 5, // Rather than inspect every single pixel in the image inspect every 5th pixel
             count = 0,
             i = -4,
@@ -15,7 +14,7 @@
         if (!context) { return rgb; }
 
         // set the height and width of the canvas element to that of the image
-        var height = canvas.height = img.naturalHeight || img.offsetHeight || img.height,
+        const height = canvas.height = img.naturalHeight || img.offsetHeight || img.height,
             width = canvas.width = img.naturalWidth || img.offsetWidth || img.width;
 
         context.drawImage(img, 0, 0);
@@ -72,20 +71,6 @@
                 0.213 - cos * 0.213 - sin * 0.787,
                 0.715 - cos * 0.715 + sin * 0.715,
                 0.072 + cos * 0.928 + sin * 0.072,
-            ]);
-        }
-
-        grayscale(value = 1) {
-            this.multiply([
-                0.2126 + 0.7874 * (1 - value),
-                0.7152 - 0.7152 * (1 - value),
-                0.0722 - 0.0722 * (1 - value),
-                0.2126 - 0.2126 * (1 - value),
-                0.7152 + 0.2848 * (1 - value),
-                0.0722 - 0.0722 * (1 - value),
-                0.2126 - 0.2126 * (1 - value),
-                0.7152 - 0.7152 * (1 - value),
-                0.0722 + 0.9278 * (1 - value),
             ]);
         }
 
@@ -319,16 +304,13 @@
     }
 
     'use strict';
-    var paras = document.getElementsByTagName('img');
+    const paras = document.getElementsByTagName('img');
     console.log(paras.length)
-    for (let i = 0; i < paras.length; i++)
-    {
-        //alert("hi")
+    for (let i = 0; i < paras.length; i++) {
         paras[i].setAttribute('crossOrigin', '')
         let avg =getAverageColourAsRGB(paras[i]);
         const color = new Color(Math.floor(Math.random() * 255),
             Math.floor(Math.random() * 255), Math.floor(Math.random() * 255));
-        //alert(avg[0]);
         const solver = new Solver(color);
         const result = solver.solve();
         paras[i].classList.remove('picHider');
@@ -350,7 +332,6 @@
             }
             const color = new Color(Math.floor(Math.random() * 255),
                 Math.floor(Math.random() * 255), Math.floor(Math.random() * 255));
-            //alert(avg[0]);
             const solver = new Solver(color);
             const result = solver.solve();
             paras[i].classList.add('picFiller'+i);
@@ -359,8 +340,5 @@
             let rule = `.picFiller${i}:not(:hover) {${result.filter}`
             style.sheet.insertRule(rule);
         }
-
     });
-
-
 })();

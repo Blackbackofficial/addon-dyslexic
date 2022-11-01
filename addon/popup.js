@@ -106,19 +106,18 @@ function initEvents() {
         chrome.storage.sync.set({ gt_font_weight: selectedWeight });
     });
 
-    addEvent(slider_font_weight, 'change', function (event) {
-        console.log("HEREEEEEE", slider_font_weight.value)
+    addEvent(slider_font_weight, 'change', function () {
         let selectedWeight = slider_font_weight.value;
         applyFontWeight(selectedWeight);
         chrome.storage.sync.set({ gt_font_weight: selectedWeight });
     });
 
-    addEvent(slider, 'change', function (event) {
+    addEvent(slider, 'change', function () {
         let selectedHeight = slider.value;
         chrome.storage.sync.set({ gt_font_height: selectedHeight });
     });
 
-    addEvent(radiohld, 'change', function (event) {
+    addEvent(radiohld, 'change', function () {
         let radioChoice = radiohld.value;
         chrome.storage.sync.set({ gt_radio_choice: radioChoice });
     });
@@ -319,11 +318,6 @@ function clearSlider() {
     output.innerHTML = '1';
 }
 
-function clearLineHeightInput () {
-    line_height_input.value = '';
-}
-
-
 function clear_style() {
     chrome.tabs.executeScript(null,
         {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].style.removeProperty('line-height');}"}
@@ -343,14 +337,6 @@ function slider_line_weight () {
     chrome.tabs.executeScript(null,
         {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-weight:" + slider_font_weight.value + " !important');}"}
     );
-}
-
-function slider_line_height_input () {
-    console.log(line_height_input.value)
-    chrome.tabs.executeScript(null,
-        {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-height:" + line_height_input.value + " !important');}"}
-    );
-    clearSlider();
 }
 
 function input_listener(identifier, func) {

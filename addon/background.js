@@ -56,6 +56,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, info) {
 
 /**
  * Apply the giving css styles to Github code container
+ * @param selector
  * @param {String} styles
  * @returns true
  */
@@ -118,7 +119,7 @@ function showIndentGuides() {
 
 /**
  * Just a shortcut for the native target.addEventListener
- * @param {DOMElement} ele
+ * @param {String} ele
  * @param {String} event
  * @param {function} handler
  */

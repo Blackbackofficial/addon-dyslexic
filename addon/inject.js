@@ -64,9 +64,8 @@
             !(ev.ctrlKey ^ conf.keyCtrl) &&
             !(ev.altKey ^ conf.keyAlt) &&
             !(ev.shiftKey ^ conf.keyShift) &&
-            ev.key.toLowerCase() == conf.key.toLowerCase()
+            ev.key.toLowerCase() === conf.key.toLowerCase()
         ){
-            toggle();
             ev.preventDefault();
         }
     });

@@ -21,7 +21,7 @@
       "css": ["popup.css"]
     }
   ],
-  "permissions": ["activeTab", "storage", "scripting", "<all_urls>", "tabs"],
+  "permissions": ["activeTab", "storage", "<all_urls>", "tabs"],
   "web_accessible_resources": [
       "fonts/*.otf",
       "fonts/*.ttf",

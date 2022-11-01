@@ -1,5 +1,5 @@
 document.addEventListener('keydown', function(event) {
-    if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
+    if (event.code === 'KeyZ' && (event.ctrlKey || event.metaKey)) {
         let selection = window.getSelection();
 
         window.AudioContext = window.AudioContext || window.webkitAudioContext;
