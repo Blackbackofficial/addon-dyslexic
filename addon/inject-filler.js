@@ -1,17 +1,25 @@
-(function() {
+(function () {
     const style = document.createElement('style');
     document.head.appendChild(style);
-    function getAverageColourAsRGB (img) {
+
+    function getAverageColourAsRGB(img) {
         let canvas = document.createElement('canvas'),
             context = canvas.getContext && canvas.getContext('2d'),
-            rgb = {r: 102, g: 102, b: 102}, // Set a base colour as a fallback for non-compliant browsers
-            pixelInterval = 5, // Rather than inspect every single pixel in the image inspect every 5th pixel
+            rgb = {
+                r: 102,
+                g: 102,
+                b: 102
+            }, // Set a base colour as a fallback for non-compliant browsers
+            pixelInterval =
+            5, // Rather than inspect every single pixel in the image inspect every 5th pixel
             count = 0,
             i = -4,
             data, length;
 
         // return the base colour for non-compliant browsers
-        if (!context) { return rgb; }
+        if (!context) {
+            return rgb;
+        }
 
         // set the height and width of the canvas element to that of the image
         const height = canvas.height = img.naturalHeight || img.offsetHeight || img.height,
@@ -21,7 +29,7 @@
 
         try {
             data = context.getImageData(0, 0, width, height);
-        } catch(e) {
+        } catch (e) {
             return rgb;
         }
 
@@ -30,14 +38,14 @@
         while ((i += pixelInterval * 4) < length) {
             count++;
             rgb.r += data[i];
-            rgb.g += data[i+1];
-            rgb.b += data[i+2];
+            rgb.g += data[i + 1];
+            rgb.b += data[i + 2];
         }
 
         // floor the average values to give correct rgb values (ie: round number values)
-        rgb.r = Math.floor(rgb.r/count);
-        rgb.g = Math.floor(rgb.g/count);
-        rgb.b = Math.floor(rgb.b/count);
+        rgb.r = Math.floor(rgb.r / count);
+        rgb.g = Math.floor(rgb.g / count);
+        rgb.b = Math.floor(rgb.b / count);
 
         return rgb;
     }
@@ -144,17 +152,17 @@
                 const d = max - min;
                 s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
                 switch (max) {
-                    case r:
-                        h = (g - b) / d + (g < b ? 6 : 0);
-                        break;
+                case r:
+                    h = (g - b) / d + (g < b ? 6 : 0);
+                    break;
 
-                    case g:
-                        h = (b - r) / d + 2;
-                        break;
+                case g:
+                    h = (b - r) / d + 2;
+                    break;
 
-                    case b:
-                        h = (r - g) / d + 4;
-                        break;
+                case b:
+                    h = (r - g) / d + 4;
+                    break;
                 }
                 h /= 6;
             }
@@ -197,7 +205,9 @@
             const c = 15;
             const a = [60, 180, 18000, 600, 1.2, 1.2];
 
-            let best = { loss: Infinity };
+            let best = {
+                loss: Infinity
+            };
             for (let i = 0; best.loss > 25 && i < 3; i++) {
                 const initial = [50, 20, 3750, 50, 100, 100];
                 const result = this.spsa(A, a, c, initial, 1000);
@@ -247,17 +257,20 @@
                     bestLoss = loss;
                 }
             }
-            return { values: best, loss: bestLoss };
+            return {
+                values: best,
+                loss: bestLoss
+            };
 
             function fix(value, idx) {
                 let max = 100;
-                if (idx === 2 /* saturate */) {
+                if (idx === 2 /* saturate */ ) {
                     max = 7500;
-                } else if (idx === 4 /* brightness */ || idx === 5 /* contrast */) {
+                } else if (idx === 4 /* brightness */ || idx === 5 /* contrast */ ) {
                     max = 200;
                 }
 
-                if (idx === 3 /* hue-rotate */) {
+                if (idx === 3 /* hue-rotate */ ) {
                     if (value > max) {
                         value %= max;
                     } else if (value < 0) {
@@ -308,33 +321,31 @@
     console.log(paras.length)
     for (let i = 0; i < paras.length; i++) {
         paras[i].setAttribute('crossOrigin', '')
-        let avg =getAverageColourAsRGB(paras[i]);
+        let avg = getAverageColourAsRGB(paras[i]);
         const color = new Color(Math.floor(Math.random() * 255),
             Math.floor(Math.random() * 255), Math.floor(Math.random() * 255));
         const solver = new Solver(color);
         const result = solver.solve();
         paras[i].classList.remove('picHider');
-        paras[i].classList.add('picFiller'+i);
+        paras[i].classList.add('picFiller' + i);
         paras[i].classList.add('picChecker');
 
         let rule = `.picFiller${i}:not(:hover) {${result.filter}`
         style.sheet.insertRule(rule);
     }
 
-
-    window.addEventListener("scroll", function(ev){
+    window.addEventListener("scroll", function (ev) {
         var paras = document.getElementsByTagName('img');
 
-        for (let i = 0; i < paras.length; i++)
-        {
-            if (paras[i].classList.contains("picChecker")){
+        for (let i = 0; i < paras.length; i++) {
+            if (paras[i].classList.contains("picChecker")) {
                 continue;
             }
             const color = new Color(Math.floor(Math.random() * 255),
                 Math.floor(Math.random() * 255), Math.floor(Math.random() * 255));
             const solver = new Solver(color);
             const result = solver.solve();
-            paras[i].classList.add('picFiller'+i);
+            paras[i].classList.add('picFiller' + i);
             paras[i].classList.add('picChecker');
 
             let rule = `.picFiller${i}:not(:hover) {${result.filter}`

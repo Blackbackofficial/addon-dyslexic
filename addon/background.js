@@ -1,9 +1,10 @@
-var /**
+var
+    /**
      * Supported fonts
      */
     fonts = {
         'PT Mono': 'https://fonts.googleapis.com/css2?family=PT+Mono&display=swap',
-        'Atma':'https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap',
+        'Atma': 'https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap',
 
         'OpenDyslexic': 'chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexic.css',
         'SylexiadSansThin': 'chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/SylexiadSansThin.css',
@@ -22,10 +23,15 @@ chrome.tabs.onUpdated.addListener(function (tabId, info) {
 
         //chrome.tabs.insertCSS(tabId, {code: ".img:not(:hover) {opacity: 0 !important;}"});
 
-        chrome.storage.sync.get(['gt_font_family', 'gt_font_weight', 'gt_font_link', 'gt_indent_guides'], function (data) {
+        chrome.storage.sync.get(['gt_font_family', 'gt_font_weight', 'gt_font_link',
+            'gt_indent_guides'
+        ], function (data) {
             console.log("Start")
             if (Object.keys(data).length > 0) {
-                chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+                chrome.tabs.query({
+                    active: true,
+                    currentWindow: true
+                }, function (tabs) {
                     chrome.tabs.sendMessage(tabs[0].id, {
                         type: 'loadFont',
                         font: {
@@ -46,7 +52,10 @@ chrome.tabs.onUpdated.addListener(function (tabId, info) {
         chrome.runtime.onMessage.addListener(function (request) {
             console.log("Start2")
             if (request.type === 'loadFont') {
-                chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+                chrome.tabs.query({
+                    active: true,
+                    currentWindow: true
+                }, function (tabs) {
                     chrome.tabs.sendMessage(tabs[0].id, request);
                 });
             }
@@ -91,7 +100,9 @@ function stylesToCss(styles) {
  * @param {String} family
  */
 function applyFontFamily(family) {
-    applyStyles(selectors.code, { 'font-family': family });
+    applyStyles(selectors.code, {
+        'font-family': family
+    });
     chrome.extension.sendMessage({
         type: 'loadFont',
         font: {
@@ -106,15 +117,21 @@ function applyFontFamily(family) {
  * @param {String} weight
  */
 function applyFontWeight(weight) {
-    applyStyles(selectors.code, { 'font-weight': weight });
+    applyStyles(selectors.code, {
+        'font-weight': weight
+    });
 }
 
 function hideIndentGuides() {
-    applyStyles(selectors.intentGuides, { visibility: 'hidden' });
+    applyStyles(selectors.intentGuides, {
+        visibility: 'hidden'
+    });
 }
 
 function showIndentGuides() {
-    applyStyles(selectors.intentGuides, { visibility: 'visible' });
+    applyStyles(selectors.intentGuides, {
+        visibility: 'visible'
+    });
 }
 
 /**
