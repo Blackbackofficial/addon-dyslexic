@@ -307,7 +307,7 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     }
 }
 
-.bn632-hover {
+.bn1-hover, .bn2-hover {
     float: right;
     width: 60px;
     font-size: 12px;
@@ -326,7 +326,7 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     transition: all .4s ease-in-out;
 }
   
-.bn632-hover:hover {
+.bn1-hover, .bn1-hover:hover {
     background-position: 100% 0;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
@@ -334,10 +334,14 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     transition: all .4s ease-in-out;
 }
   
-.bn632-hover:focus {
+.bn1-hover, .bn1-hover:focus {
     outline: none;
 }
   
-.bn632-hover.bn27 {
-    background-image: linear-gradient(to right, #4e64dc, #973bb2, #4818f7, #b93180);
+.bn1-hover.bn1 {
+    background-image: linear-gradient(to right, #38c023, #dddddd, #23a931, #3375a9);
+}
+
+.bn2-hover.bn2 {
+    background-image: linear-gradient(to right, #3b4b69, #315523, #4818f7, #b93180);
 }

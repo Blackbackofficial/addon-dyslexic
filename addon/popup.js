@@ -246,8 +246,8 @@ function changeRuler() {
 }
 
 function updateButton(onOrOff){
-    turnButton.innerHTML = onOrOff ? "Disable" : "Enable";
-    turnButton.className = onOrOff ? "button button1 bn632-hover bn27" : "button button3 bn632-hover bn27";
+    turnButton.innerHTML = onOrOff ? "Enable" : "Disable";
+    turnButton.className = onOrOff ? "button button1 bn1-hover bn1" : "button button3 bn2-hover bn2";
     
 }        
 
