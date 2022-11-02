@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     let check = document.querySelector('.rulerItem')
@@ -23,10 +23,9 @@
         mixBlendMode: "difference",
     }
 
-
     const bar = document.createElement("div");
-    bar.setAttribute('class','rulerItem')
-    bar.setAttribute('style','mix-blend-mode: exclusion;')
+    bar.setAttribute('class', 'rulerItem')
+    bar.setAttribute('style', 'mix-blend-mode: exclusion;')
     let visible = true;
 
     const styles = {
@@ -43,11 +42,13 @@
         boxShadow: `0 1px 4px rgba(0, 0, 0, ${conf.shadow})`,
         zIndex: 9999999
     };
-    Object.keys(styles).forEach(function(k){ bar.style[k] = styles[k] });
+    Object.keys(styles).forEach(function (k) {
+        bar.style[k] = styles[k]
+    });
 
-    document.body.addEventListener("mousemove", function(ev){
+    document.body.addEventListener("mousemove", function (ev) {
         bar.style.top = ev.clientY + "px";
-        if(visible){
+        if (visible) {
             const over = document.elementFromPoint(ev.clientX, ev.clientY);
             const size = window.getComputedStyle(over).getPropertyValue("line-height");
             const [m, num, unit] = (size && size.match(/([\d\.]+)([^\d]+)/)) || [];
@@ -55,17 +56,16 @@
         }
     });
 
-
     document.body.appendChild(bar);
     bar.style.display = visible ? "block" : "none";
 
-    window.addEventListener("keypress", function(ev){
-        if(
+    window.addEventListener("keypress", function (ev) {
+        if (
             !(ev.ctrlKey ^ conf.keyCtrl) &&
             !(ev.altKey ^ conf.keyAlt) &&
             !(ev.shiftKey ^ conf.keyShift) &&
             ev.key.toLowerCase() === conf.key.toLowerCase()
-        ){
+        ) {
             ev.preventDefault();
         }
     });

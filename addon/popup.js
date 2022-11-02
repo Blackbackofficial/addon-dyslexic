@@ -19,7 +19,7 @@ const
     weightsDatalist = document.querySelector('#fonts_weight_list'),
     weightsDatalistInput = document.querySelector('#fonts_weight'),
     IndentGuidesCheckbox = document.querySelector('#indentGuides');
-    fontSelect = document.querySelector('#font_select')
+    fontSelect = document.querySelector('#font_select');
     //picSelect = document.querySelector('#pic-hider')
 
     slider_font_weight = document.querySelector('#slider_font_weight');
@@ -34,9 +34,9 @@ const
     ruler = document.querySelector('#rulerGuides');
     reader = document.querySelector('#readerMode');
     voicer = document.querySelector('#voiceMode');
-    IdEvents = ['gt_font_family', 'gt_font_weight', 'gt_indent_guide',
-        'gt_font_height', 'gt_radio_choice', 'gt_ruler', 'gt_voicer',
-        'gt_reader'];
+    IdEvents = ['gt_font_family', 'gt_font_weight', 'gt_indent_guide', 'gt_font_height',
+        'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader'
+    ];
 
 /**
  * Populate options of the select font families dropdown
@@ -119,13 +119,16 @@ function fillWeightsDropdown(family) {
     try {
         while (i < weights.length) {
             let weight = weights[i];
-            createOption(`${weight} - ${weightsNames[weight]}`, weight, weightsDatalist);
+            createOption(`${weight} - ${weightsNames[weight]}`,
+                weight,
+                weightsDatalist);
             i++;
         }
     } catch (error) {
         // fonts which return null on weights.length
         let weight = 400;
-        createOption(`${weight} - ${weightsNames[weight]}`, weight, weightsDatalist);
+        createOption(`${weight} - ${weightsNames[weight]}`, weight,
+            weightsDatalist);
     }
 }
 
@@ -134,13 +137,9 @@ function fillWeightsDropdown(family) {
  * @param {String} oldSelectedWeight
  */
 function updateSelectedWeight(oldSelectedWeight) {
-    let option = weightsDatalist.querySelector(`option[value="${oldSelectedWeight}"]`);
+    let option = weightsDatalist.querySelector(
+        `option[value="${oldSelectedWeight}"]`);
     if (option === null) {
-        /**
-         * The first option was selected and the old font weight isn't supported by
-         * the new selected font family, so we trigger the weights dropdown change
-         * event to apply the first selected font weight.
-         */
         weightsDatalist.dispatchEvent(new Event('change'));
     } else {
         option.setAttribute('selected', '');
@@ -182,62 +181,65 @@ function clearSlider() {
 }
 
 function clear_style() {
-    chrome.tabs.executeScript(null,
-        {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].style.removeProperty('line-height');}"}
-    );
+    chrome.tabs.executeScript(null, {
+        code: "var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].style.removeProperty('line-height');}"
+    });
     clearSlider();
 }
 
-function slider_line_height () {
-    console.log(slider.value)
-    chrome.tabs.executeScript(null,
-        {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-height:" + slider.value + " !important');}"}
-    );
+function slider_line_height() {
+    chrome.tabs.executeScript(null, {
+        code: "var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-height:" +
+            slider.value + " !important');}"
+    });
 }
 
-function slider_line_weight () {
-    console.log(slider_font_weight.value)
-    chrome.tabs.executeScript(null,
-        {code:"var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-weight:" + slider_font_weight.value + " !important');}"}
-    );
+function slider_line_weight() {
+    chrome.tabs.executeScript(null, {
+        code: "var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-weight:" +
+            slider_font_weight.value + " !important');}"
+    });
 }
 
 function changeHandler() {
-    switch (this.value){
-        case "1":
-            chrome.tabs.executeScript(null,
-                {code:"var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++)" +
-                        "{paras[i].classList.add('picHider');}"}
-            );
-            break
-        case "2":
-            chrome.tabs.executeScript(null,
-                {code:"var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++) " +
-                        "{paras[i].classList.remove('picHider');paras[i].classList.remove('picFiller');}"}
-            );
-            break
-        case "3":
-            chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-                let activeTab = tabs[0];
-                let activeTabId = activeTab.id; // or do whatever you need
-                chrome.tabs.executeScript(activeTabId, {
-                    file: 'inject-filler.js'
-                });
+    switch (this.value) {
+    case "1":
+        chrome.tabs.executeScript(null, {
+            code: "var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++)" +
+                "{paras[i].classList.add('picHider');}"
+        });
+        break;
+    case "2":
+        chrome.tabs.executeScript(null, {
+            code: "var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++) " +
+                "{paras[i].classList.remove('picHider');paras[i].classList.remove('picFiller');}"
+        });
+        break;
+    case "3":
+        chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        }, function (tabs) {
+            let activeTab = tabs[0];
+            let activeTabId = activeTab
+                .id; // or do whatever you need
+            chrome.tabs.executeScript(activeTabId, {
+                file: 'inject-filler.js'
             });
-            break
+        });
+        break;
 
     }
 }
 
 function pic_listener(radios, func) {
-
-    Array.prototype.forEach.call(radios, function(radio) {
+    Array.prototype.forEach.call(radios, function (radio) {
         radio.addEventListener('change', func);
     });
 }
 
-function changeRuler(){
-    chrome.tabs.executeScript(null,
-        {code:"var paras =  document.querySelector('#rulerItem');"}
-    );
+function changeRuler() {
+    chrome.tabs.executeScript(null, {
+        code: "var paras =  document.querySelector('#rulerItem');"
+    });
 }

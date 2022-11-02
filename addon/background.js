@@ -20,9 +20,7 @@ var
 chrome.tabs.onUpdated.addListener(function (tabId, info) {
     // if the tab is completely loaded
     if (info.status === 'complete') {
-
         //chrome.tabs.insertCSS(tabId, {code: ".img:not(:hover) {opacity: 0 !important;}"});
-
         chrome.storage.sync.get(['gt_font_family', 'gt_font_weight', 'gt_font_link',
             'gt_indent_guides'
         ], function (data) {
