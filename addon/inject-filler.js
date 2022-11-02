@@ -318,7 +318,6 @@
 
     'use strict';
     const paras = document.getElementsByTagName('img');
-    console.log(paras.length)
     for (let i = 0; i < paras.length; i++) {
         paras[i].setAttribute('crossOrigin', '')
         let avg = getAverageColourAsRGB(paras[i]);

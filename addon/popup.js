@@ -1,3 +1,4 @@
+let backgroundPage;
 const
     /**
      * variables from background
@@ -20,6 +21,7 @@ const
     weightsDatalistInput = document.querySelector('#fonts_weight'),
     IndentGuidesCheckbox = document.querySelector('#indentGuides');
     fontSelect = document.querySelector('#font_select');
+    turnButton = document.querySelector('#disableButton');
     //picSelect = document.querySelector('#pic-hider')
 
     slider_font_weight = document.querySelector('#slider_font_weight');
@@ -35,7 +37,7 @@ const
     reader = document.querySelector('#readerMode');
     voicer = document.querySelector('#voiceMode');
     IdEvents = ['gt_font_family', 'gt_font_weight', 'gt_indent_guide', 'gt_font_height',
-        'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader'
+        'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader', 'is_work'
     ];
 
 /**
@@ -86,7 +88,6 @@ function insertPreviousValues(data) {
 
     // radioButton
     radiohld.value = data.gt_radio_choice;
-    console.log(data.gt_radio_choice);
 
     // checkBox
     ruler.checked = !data.gt_ruler;
@@ -243,3 +244,29 @@ function changeRuler() {
         code: "var paras =  document.querySelector('#rulerItem');"
     });
 }
+
+function updateButton(onOrOff){
+    turnButton.innerHTML = onOrOff ? "Disable" : "Enable";
+    turnButton.className = onOrOff ? "button button1 bn632-hover bn27" : "button button3 bn632-hover bn27";
+    
+}        
+
+function toggleButton(){
+    backgroundPage.isExtensionOn = !backgroundPage.isExtensionOn;
+    updateButton(backgroundPage.isExtensionOn);
+    chrome.storage.sync.set({
+        is_work: backgroundPage.isExtensionOn
+    });
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
+    });
+}
+
+chrome.runtime.getBackgroundPage(function(bgPage) {
+    backgroundPage = bgPage;
+    updateButton(bgPage.isExtensionOn);
+    turnButton.onclick = toggleButton;
+    turnButton.style.display = "";
+    document.getElementById("br1").style.display = "";
+    document.getElementById("br1").style.display = "";
+});

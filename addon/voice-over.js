@@ -16,8 +16,6 @@ document.addEventListener('keydown', function (event) {
                     credentials: 'include',
                 });
             let result = await response;
-            console.log('HERE')
-            console.log(result.status)
             return result.arrayBuffer();
         };
 
@@ -31,9 +29,9 @@ document.addEventListener('keydown', function (event) {
                 const blob = new Blob([audio], {
                     type: 'audio/mp3'
                 })
-                console.log('blob')
+                // console.log('blob')
                 const url = URL.createObjectURL(blob);
-                console.log(url)
+                // console.log(url)
                 const playSound = new Audio(url);
                 playSound.play().then(a => console.log('then')).catch(e => console.log(e));
 
