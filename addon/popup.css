@@ -92,16 +92,16 @@
     margin: 10px auto;
     padding: 10px 15px;
     box-shadow: none;
-    background:white;
-    border: 1px solid #00cd97;
-    color: #00cd97;
+    background: white;
+    border: 2px solid #70738c;
+    color: #70738c;
     border-radius: 500px;
     cursor: pointer;
 }
 
 .button-class-1:hover {
-    background:#00cd97;
-    border: 1px solid #00cd97;
+    background:#70738c;
+    border: 2px solid #70738c;
     color: white;
 }
 
