@@ -1,8 +1,7 @@
-let backgroundPage;
+/**
+ * variables from background
+ */
 const
-    /**
-     * variables from background
-     */
     background = chrome.extension.getBackgroundPage(),
     addEvent = background.addEvent,
     applyStyles = background.applyStyles,
@@ -12,34 +11,33 @@ const
     showIndentGuides = background.showIndentGuides,
     hideIndentGuides = background.hideIndentGuides,
     fonts = background.fonts,
-    /**
-     * Popup DOM elements
-     */
-    fontsDatalist = document.querySelector('#font_family_list'),
-    fontsDatalistInput = document.querySelector('#font_family'),
-    weightsDatalist = document.querySelector('#fonts_weight_list'),
-    weightsDatalistInput = document.querySelector('#fonts_weight'),
-    IndentGuidesCheckbox = document.querySelector('#indentGuides');
-    fontSelect = document.querySelector('#font_select');
-    turnButton = document.querySelector('#disableButton');
-    //picSelect = document.querySelector('#pic-hider')
+/**
+ * Popup DOM elements
+ */
+fontsDatalist = document.querySelector('#font_family_list'),
+fontsDatalistInput = document.querySelector('#font_family'),
+weightsDatalist = document.querySelector('#fonts_weight_list'),
+weightsDatalistInput = document.querySelector('#fonts_weight'),
+IndentGuidesCheckbox = document.querySelector('#indentGuides');
+fontSelect = document.querySelector('#font_select');
+turnButton = document.querySelector('#disableButton');
 
-    slider_font_weight = document.querySelector('#slider_font_weight');
-    output_font_weight = document.querySelector('#output_font_weight');
-    slider_settings_font_weight = document.querySelector('#slider_settings_font_weight');
+slider_font_weight = document.querySelector('#slider_font_weight');
+output_font_weight = document.querySelector('#output_font_weight');
+slider_settings_font_weight = document.querySelector('#slider_settings_font_weight');
 
-    slider = document.querySelector('#slider');
-    output = document.querySelector('#output');
-    clear_btn = document.querySelector('#clear_btn');
-    radiohld = document.querySelector('#pic_hider');
-    radios = document.querySelectorAll('input[type=radio][name="pic"]');
-    ruler = document.querySelector('#rulerGuides');
-    reader = document.querySelector('#readerMode');
-    voicer = document.querySelector('#voiceMode');
-    IdEvents = ['gt_font_family', 'gt_font_weight', 'gt_indent_guide', 'gt_font_height',
-        'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader', 'is_work'
-    ];
-
+slider = document.querySelector('#slider');
+output = document.querySelector('#output');
+clear_btn = document.querySelector('#clear_btn');
+radiohld = document.querySelector('#pic_hider');
+radios = document.querySelectorAll('input[type=radio][name="mode"]');
+ruler = document.querySelector('#rulerGuides');
+reader = document.querySelector('#readerMode');
+voicer = document.querySelector('#voiceMode');
+IdEvents = ['gt_font_family', 'gt_font_weight', 'gt_indent_guide', 'gt_font_height',
+    'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader', 'is_work', 'gt_radio_button'
+];
+let backgroundPage;
 /**
  * Populate options of the select font families dropdown
  */
@@ -87,12 +85,18 @@ function insertPreviousValues(data) {
     output.value = data.gt_font_height;
 
     // radioButton
-    radiohld.value = data.gt_radio_choice;
+    var radioButton = document.getElementById(data.gt_radio_button);
+    console.log(radioButton);
+    
+    // radioButton.checked = true;
+    radioButton.click(); //fix !!!
+    
+
 
     // checkBox
-    ruler.checked = !data.gt_ruler;
-    voicer.checked = !data.gt_voicer;
-    reader.checked = !data.gt_reader;
+    // ruler.checked = !data.gt_ruler;
+    // voicer.checked = !data.gt_voicer;
+    // reader.checked = !data.gt_reader;
 }
 
 /**

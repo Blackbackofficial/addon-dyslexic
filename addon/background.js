@@ -23,7 +23,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, info) {
         //chrome.tabs.insertCSS(tabId, {code: ".img:not(:hover) {opacity: 0 !important;}"});
         chrome.storage.sync.get(['gt_font_family', 'gt_font_weight', 'gt_font_link', 'gt_indent_guides', 'is_work'], function (data) {
             console.log("Start")
-            if (data.is_work){
+            if (data.is_work) {
                 if (Object.keys(data).length > 0) {
                     chrome.tabs.query({
                         active: true,

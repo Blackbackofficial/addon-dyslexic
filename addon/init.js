@@ -91,7 +91,10 @@ function initVoicer() {
 function updateUIFromStorage() {
     chrome.storage.sync.get(IdEvents, function (data) {
         if (Object.keys(data).length > 0) {
-            console.log(data);
+            if (data.gt_radio_button === undefined) {
+                data.gt_radio_button = 2;
+            }
+
             if (data.is_work) {
                 const isLocalFont = Object.keys(fonts).indexOf(data.gt_font_family) === -1;
                 // make the restored font family & weight selected
@@ -154,6 +157,16 @@ function initEvents() {
         chrome.storage.sync.set({
             gt_font_weight: selectedWeight
         });
+    });
+    addEvent(radiohld, 'change', function () {
+        for (const radioButton of radios) {
+            if (radioButton.checked) {
+                chrome.storage.sync.set({
+                    gt_radio_button: radioButton.value
+                });
+                break;
+            }
+        }
     });
     addEvent(slider, 'change', function () {
         let selectedHeight = slider.value;
