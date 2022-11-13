@@ -22,21 +22,23 @@ IndentGuidesCheckbox = document.querySelector('#indentGuides');
 fontSelect = document.querySelector('#font_select');
 turnButton = document.querySelector('#disableButton');
 
-slider_font_weight = document.querySelector('#slider_font_weight');
-output_font_weight = document.querySelector('#output_font_weight');
-slider_settings_font_weight = document.querySelector('#slider_settings_font_weight');
+    slider_font_weight = document.querySelector('#slider_font_weight');
+    output_font_weight = document.querySelector('#output_font_weight');
+    slider_settings_font_weight = document.querySelector('#slider_settings_font_weight');
 
-slider = document.querySelector('#slider');
-output = document.querySelector('#output');
-clear_btn = document.querySelector('#clear_btn');
-radiohld = document.querySelector('#pic_hider');
-radios = document.querySelectorAll('input[type=radio][name="mode"]');
-ruler = document.querySelector('#rulerGuides');
-reader = document.querySelector('#readerMode');
-voicer = document.querySelector('#voiceMode');
-IdEvents = ['gt_font_family', 'gt_font_weight', 'gt_indent_guide', 'gt_font_height',
-    'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader', 'is_work', 'gt_radio_button'
-];
+    slider = document.querySelector('#slider');
+    output = document.querySelector('#output');
+    clear_btn = document.querySelector('#clear_btn');
+    radiohld = document.querySelector('#pic_hider');
+    radios = document.querySelectorAll('input[type=radio][name="pic"]');
+    ruler = document.querySelector('#rulerGuides');
+    reader = document.querySelector('#readerMode');
+    voicer = document.querySelector('#voiceMode');
+    bionic = document.querySelector('#bionicMode');
+    IdEvents = ['gt_font_family', 'gt_font_weight', 'gt_indent_guide', 'gt_font_height',
+        'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader',  'gt_bionic', 'is_work'
+    ];
+
 let backgroundPage;
 /**
  * Populate options of the select font families dropdown
@@ -90,13 +92,6 @@ function insertPreviousValues(data) {
     
     // radioButton.checked = true;
     radioButton.click(); //fix !!!
-    
-
-
-    // checkBox
-    // ruler.checked = !data.gt_ruler;
-    // voicer.checked = !data.gt_voicer;
-    // reader.checked = !data.gt_reader;
 }
 
 /**
