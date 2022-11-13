@@ -14,6 +14,7 @@ addEvent(document, 'DOMContentLoaded', function () {
     init_clicker_listener(ruler, changeRuler);
     init_clicker_listener(reader, initReader);
     init_clicker_listener(voicer, initVoicer);
+    init_clicker_listener(bionic, initBionic);
 });
 
 function init_clicker_listener(identifier, func) {
@@ -83,6 +84,22 @@ function initVoicer() {
             });
         })
     }
+}
+
+function initBionic() {
+    //if (bionic.checked) {
+        // to save a state
+        chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        }, function (tabs) {
+            let activeTab = tabs[0];
+            let activeTabId = activeTab.id; // or do whatever you need
+            chrome.tabs.executeScript(activeTabId, {
+                file: 'inject-bionic.js'
+            });
+        })
+   // }
 }
 
 /**

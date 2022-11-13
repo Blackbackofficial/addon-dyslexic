@@ -36,8 +36,9 @@ const
     ruler = document.querySelector('#rulerGuides');
     reader = document.querySelector('#readerMode');
     voicer = document.querySelector('#voiceMode');
+    bionic = document.querySelector('#bionicMode');
     IdEvents = ['gt_font_family', 'gt_font_weight', 'gt_indent_guide', 'gt_font_height',
-        'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader', 'is_work'
+        'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader',  'gt_bionic', 'is_work'
     ];
 
 /**
@@ -93,6 +94,7 @@ function insertPreviousValues(data) {
     ruler.checked = !data.gt_ruler;
     voicer.checked = !data.gt_voicer;
     reader.checked = !data.gt_reader;
+    //bionic.checked = !data.gt_bionic;
 }
 
 /**
