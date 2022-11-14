@@ -2,7 +2,7 @@
 addEvent(document, 'DOMContentLoaded', function () {
     initEvents();
     addSelectsFonts();
-    fillFontsDrodown();
+    // fillFontsDrodown();
     updateUIFromStorage();
     input_listener(slider_font_weight, updateFontWeightOutput);
     input_listener(slider_font_weight, slider_line_weight);
@@ -11,7 +11,7 @@ addEvent(document, 'DOMContentLoaded', function () {
     click_listener(clear_btn, clear_style);
     pic_listener(radios, changeHandler);
     init_clicker_listener(ruler, initRuler);
-    init_clicker_listener(ruler, changeRuler);
+    // init_clicker_listener(ruler, changeRuler);
     init_clicker_listener(reader, initReader);
     init_clicker_listener(voicer, initVoicer);
     init_clicker_listener(bionic, initBionic);
@@ -124,18 +124,23 @@ function updateUIFromStorage() {
                 data.gt_radio_button = 2;
             }
 
-            if (data.is_work) {
-                const isLocalFont = Object.keys(fonts).indexOf(data.gt_font_family) === -1;
-                // make the restored font family & weight selected
-                fontsDatalistInput.value = data.gt_font_family;
-                weightsDatalistInput.value = data.gt_font_weight;
-                // update indentation guides checkbox
-                IndentGuidesCheckbox.checked = !data.gt_indent_guide;
-                insertPreviousValues(data);
-                if (!isLocalFont) {
-                    // fill the weights dropdown
-                    fillWeightsDropdown(fontsDatalistInput.value);
-                }
+            applyFontFamily(data.gt_font_family);
+            applyFontWeight(data.gt_font_weight);
+            const isLocalFont = Object.keys(fonts).indexOf(data.gt_font_family) === -1;
+            // make the restored font family & weight selected
+            fontsDatalistInput.value = data.gt_font_family;
+            weightsDatalistInput.value = data.gt_font_weight;
+            // update indentation guides checkbox
+
+            ruler.checked = data.gt_ruler;
+            reader.checked = data.gt_reader;
+            voicer.checked = data.gt_voicer;
+
+            IndentGuidesCheckbox.checked = !data.gt_indent_guide;
+            insertPreviousValues(data);
+            if (!isLocalFont) {
+                // fill the weights dropdown
+                fillWeightsDropdown(fontsDatalistInput.value);
             }
         }
     });
@@ -212,19 +217,19 @@ function initEvents() {
     addEvent(ruler, 'change', function (event) {
         let checked = event.target.checked;
         chrome.storage.sync.set({
-            gt_ruler: !checked
+            gt_ruler: checked
         });
     });
     addEvent(voicer, 'change', function (event) {
         let checked = event.target.checked;
         chrome.storage.sync.set({
-            gt_voicer: !checked
+            gt_voicer: checked
         });
     });
     addEvent(reader, 'change', function (event) {
         let checked = event.target.checked;
         chrome.storage.sync.set({
-            gt_reader: !checked
+            gt_reader: checked
         });
     });
     addEvent(IndentGuidesCheckbox, 'change', function (event) {

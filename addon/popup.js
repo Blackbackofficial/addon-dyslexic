@@ -73,18 +73,18 @@ function insertPreviousValues(data) {
     fontSelect.value = data.gt_font_family;
 
     // weight
-    if (data.gt_font_weight === undefined) {
-        slider_font_weight.value, output_font_weight.value = 100;
-    }
     slider_font_weight.value = data.gt_font_weight;
     output_font_weight.value = data.gt_font_weight;
+    if (data.gt_font_weight === undefined) {
+        slider_font_weight.value = output_font_weight.value = 100;
+    }
 
     // height
-    if (data.gt_font_height === undefined) {
-        slider.value, output.value = 1;
-    }
     slider.value = data.gt_font_height;
     output.value = data.gt_font_height;
+    if (data.gt_font_height === undefined) {
+        slider.value = output.value = 1;
+    }
 
     // radioButton
     var radioButton = document.getElementById(data.gt_radio_button);
@@ -185,6 +185,7 @@ function clear_style() {
         code: "var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].style.removeProperty('line-height');}"
     });
     clearSlider();
+    updatePage();
 }
 
 function slider_line_height() {
@@ -243,16 +244,9 @@ function pic_listener(radios, func) {
     });
 }
 
-function changeRuler() {
-    chrome.tabs.executeScript(null, {
-        code: "var paras =  document.querySelector('#rulerItem');"
-    });
-}
-
 function updateButton(onOrOff){
     turnButton.innerHTML = onOrOff ? "Enable" : "Disable";
     turnButton.className = onOrOff ? "button button1 bn1-hover bn1" : "button button3 bn2-hover bn2";
-    
 }        
 
 function toggleButton(){
@@ -261,6 +255,9 @@ function toggleButton(){
     chrome.storage.sync.set({
         is_work: backgroundPage.isExtensionOn
     });
+}
+
+function updatePage() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
     });
