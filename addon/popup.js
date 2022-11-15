@@ -51,7 +51,7 @@ function fillFontsDrodown() {
             continue;
         }
 
-        createOption(fontName, fontName, fontsDatalist);
+        createOption(fontName, fontName, fontsDatalist, true);
     }
 }
 
@@ -65,7 +65,7 @@ function addSelectsFonts() {
             continue;
         }
 
-        createOption(fontName, fontName, fontSelect);
+        createOption(fontName, fontName, fontSelect, true);
     }
 }
 
@@ -122,14 +122,14 @@ function fillWeightsDropdown(family) {
             let weight = weights[i];
             createOption(`${weight} - ${weightsNames[weight]}`,
                 weight,
-                weightsDatalist);
+                weightsDatalist, false);
             i++;
         }
     } catch (error) {
         // fonts which return null on weights.length
         let weight = 400;
         createOption(`${weight} - ${weightsNames[weight]}`, weight,
-            weightsDatalist);
+            weightsDatalist, false);
     }
 }
 
@@ -150,12 +150,15 @@ function updateSelectedWeight(oldSelectedWeight) {
 /**
  * Create option element for select dropdown
  */
-function createOption(textContent, value, append) {
+function createOption(textContent, value, append, toAdd) {
     let option = document.createElement('option');
 
     option.textContent = textContent;
     option.value = value;
-    option.classList.add(textContent.replace(" ","_"));
+
+    if (toAdd) {
+        option.classList.add(textContent.replace(" ", "_"));
+    }
 
     append.appendChild(option);
 }

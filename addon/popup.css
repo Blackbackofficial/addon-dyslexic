@@ -206,7 +206,7 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
         left: 0;
         top: 0;
         position: absolute;
-        transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+        transition: transform var(--d-t,0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
     }
     input[type='checkbox']:checked, input[type='radio']:checked {
         --b: var(--active);
@@ -345,24 +345,43 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     background-image: linear-gradient(to right, #3b4b69, #315523, #4818f7, #b93180);
 }
 
+@font-face {
+    font-family: 'PT Mono';
+    src: url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+}
+@font-face {
+    font-family: 'Atma';
+    src: url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap');
+}
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: local('chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexic.css');
+}
+@font-face {
+    font-family: 'SylexiadSansThin';
+    src: local('chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/SylexiadSansThin.css');
+}
+@font-face {
+    font-family: 'SylexiadSerifThin';
+    src: local('chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/SylexiadSerifThin.css');
+}
 
 .Atma {
-   font-family: "Open Sans";
+   font-family:  'Atma' !important ;
 }
 
 .OpenDyslexic {
-    font-family: "DejaVu Sans";
+    font-family: 'OpenDyslexic' !important;
 }
 
 .PT_Mono {
-    font-family: "Comic Sans MS";
+    font-family: 'PT Mono' !important;
 }
 
-
 .SylexiadSansThin {
-    font-family: "Comic Sans MS";
+    font-family: 'SylexiadSansThin' !important
 }
 
 .SylexiadSerifThin {
-    font-family: "SansSerif";
+    font-family: 'SylexiadSerifThin' !important;
 }
