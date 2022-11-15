@@ -344,3 +344,25 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
 .bn2-hover.bn2 {
     background-image: linear-gradient(to right, #3b4b69, #315523, #4818f7, #b93180);
 }
+
+
+.Atma {
+   font-family: "Open Sans";
+}
+
+.OpenDyslexic {
+    font-family: "DejaVu Sans";
+}
+
+.PT_Mono {
+    font-family: "Comic Sans MS";
+}
+
+
+.SylexiadSansThin {
+    font-family: "Comic Sans MS";
+}
+
+.SylexiadSerifThin {
+    font-family: "SansSerif";
+}

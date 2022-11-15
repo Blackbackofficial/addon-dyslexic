@@ -155,6 +155,7 @@ function createOption(textContent, value, append) {
 
     option.textContent = textContent;
     option.value = value;
+    option.classList.add(textContent.replace(" ","_"));
 
     append.appendChild(option);
 }
