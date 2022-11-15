@@ -4,9 +4,25 @@
     let check = document.querySelector('.rulerItem')
     if (check) {
         if (check.style.display === "none") {
-            check.style.display = "block";
+            chrome.storage.sync.get(['gt_ruler'], function (data) {
+                let rulerChecked = data.gt_ruler;
+                console.log(rulerChecked);
+                let check = document.querySelector('.rulerItem')
+                if (rulerChecked) {
+                    check.style.display = "block";
+                }
+            });
+            // check.style.display = "block";
         } else {
-            check.style.display = "none";
+            chrome.storage.sync.get(['gt_ruler'], function (data) {
+                let rulerChecked = data.gt_ruler;
+                console.log(rulerChecked);
+                let check = document.querySelector('.rulerItem')
+                if (!rulerChecked) {
+                    check.style.display = "none";
+                }
+            });
+            // check.style.display = "none";
         }
         return
     }

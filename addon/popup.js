@@ -30,13 +30,14 @@ turnButton = document.querySelector('#disableButton');
     output = document.querySelector('#output');
     clear_btn = document.querySelector('#clear_btn');
     radiohld = document.querySelector('#pic_hider');
-    radios = document.querySelectorAll('input[type=radio][name="pic"]');
+    radios = document.querySelectorAll('input[type=radio][name="mode"]');
     ruler = document.querySelector('#rulerGuides');
     reader = document.querySelector('#readerMode');
     voicer = document.querySelector('#voiceMode');
     bionic = document.querySelector('#bionicMode');
     IdEvents = ['gt_font_family', 'gt_font_weight', 'gt_indent_guide', 'gt_font_height',
-        'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader',  'gt_bionic', 'is_work'
+        'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader', 'is_work', 'gt_radio_button',
+        'gt_last_tab_id'
     ];
 
 let backgroundPage;
@@ -185,6 +186,14 @@ function clear_style() {
         code: "var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].style.removeProperty('line-height');}"
     });
     clearSlider();
+    ruler.checked = false;
+    reader.checked = false;
+    voicer.checked = false;
+    chrome.storage.sync.set({
+        gt_ruler: false,
+        gt_reader: false,
+        gt_voicer: false,
+    });
     updatePage();
 }
 

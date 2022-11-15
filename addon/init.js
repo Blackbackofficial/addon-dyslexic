@@ -24,18 +24,20 @@ function init_clicker_listener(identifier, func) {
 }
 
 function initRuler() {
-    if (ruler.checked) {
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function (tabs) {
-            let activeTab = tabs[0];
-            let activeTabId = activeTab.id; // or do whatever you need
-            chrome.tabs.executeScript(activeTabId, {
-                file: 'inject.js'
-            });
+    chrome.tabs.query({
+        active: true,
+        currentWindow: true
+    }, function (tabs) {
+        let activeTab = tabs[0];
+        let activeTabId = activeTab.id; // or do whatever you need
+        chrome.storage.sync.set({
+            gt_last_tab_id: activeTabId,
+        })
+
+        chrome.tabs.executeScript(activeTabId, {
+            file: 'inject.js'
         });
-    }
+    });
 }
 
 function click_listener(identifier, func) {
@@ -124,8 +126,6 @@ function updateUIFromStorage() {
                 data.gt_radio_button = 2;
             }
 
-            applyFontFamily(data.gt_font_family);
-            applyFontWeight(data.gt_font_weight);
             const isLocalFont = Object.keys(fonts).indexOf(data.gt_font_family) === -1;
             // make the restored font family & weight selected
             fontsDatalistInput.value = data.gt_font_family;
@@ -142,6 +142,11 @@ function updateUIFromStorage() {
                 // fill the weights dropdown
                 fillWeightsDropdown(fontsDatalistInput.value);
             }
+
+            initRuler();
+
+            applyFontFamily(data.gt_font_family);
+            applyFontWeight(data.gt_font_weight);
         }
     });
 }
