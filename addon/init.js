@@ -144,7 +144,9 @@ function updateUIFromStorage() {
                 fillWeightsDropdown(fontsDatalistInput.value);
             }
 
-            initRuler();
+            if (ruler.checked) {
+                initRuler();
+            }
 
             applyFontFamily(data.gt_font_family);
             applyFontWeight(data.gt_font_weight);
