@@ -83,6 +83,18 @@ function initVoicer() {
                 file: 'voice-over.js'
             });
         })
+    } else  {
+        // to save a state
+        chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        }, function (tabs) {
+            let activeTab = tabs[0];
+            let activeTabId = activeTab.id; // or do whatever you need
+            chrome.tabs.executeScript(activeTabId, {
+                file: 'voice-over-remover.js'
+            });
+        })
     }
 }
 

@@ -213,9 +213,15 @@ function changeHandler() {
         });
         break;
     case "2":
-        chrome.tabs.executeScript(null, {
-            code: "var paras = document.getElementsByTagName('img');for (var i = 0; i < paras.length; i++) " +
-                "{paras[i].classList.remove('picHider');paras[i].classList.remove('picFiller');}"
+        chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        }, function (tabs) {
+            let activeTab = tabs[0];
+            let activeTabId = activeTab.id; // or do whatever you need
+            chrome.tabs.executeScript(activeTabId, {
+                file: 'inject-filler-remover.js'
+            });
         });
         break;
     case "3":
@@ -224,8 +230,7 @@ function changeHandler() {
             currentWindow: true
         }, function (tabs) {
             let activeTab = tabs[0];
-            let activeTabId = activeTab
-                .id; // or do whatever you need
+            let activeTabId = activeTab.id; // or do whatever you need
             chrome.tabs.executeScript(activeTabId, {
                 file: 'inject-filler.js'
             });

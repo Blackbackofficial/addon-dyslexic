@@ -1,16 +1,15 @@
-document.addEventListener('keydown', function (event) {
+let voicerer = function (event) {
     if (event.code === 'KeyZ' && (event.ctrlKey || event.metaKey)) {
         let selection = window.getSelection();
 
         window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
-        console.log(selection)
         const fetchSong = async () => {
             const response = await fetch(
                 `https://voice.mcs.mail.ru/tts?text=${selection}&encoder=mp3`, {
                     method: 'GET',
                     headers: {
-                        'Authorization': 'Bearer *'
+                        'Authorization': 'Bearer *',
                     },
                     redirect: "follow",
                     credentials: 'include',
@@ -38,4 +37,13 @@ document.addEventListener('keydown', function (event) {
             }
         ).catch(e => console.log(e));
     }
-});
+}
+document.addEventListener('keydown', voicerer);
+
+let input = document.createElement("input");
+input.setAttribute("id", "voicerEvent");
+input.onclick = function (){
+    window.removeEventListener("keydown", voicerer);
+    input.remove();
+};
+document.body.appendChild(input);

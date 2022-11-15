@@ -333,7 +333,8 @@
         style.sheet.insertRule(rule);
     }
 
-    window.addEventListener("scroll", function (ev) {
+
+    let scroller = function (ev) {
         var paras = document.getElementsByTagName('img');
 
         for (let i = 0; i < paras.length; i++) {
@@ -350,5 +351,15 @@
             let rule = `.picFiller${i}:not(:hover) {${result.filter}`
             style.sheet.insertRule(rule);
         }
-    });
+    };
+
+    window.addEventListener("scroll", scroller);
+
+    let input = document.createElement("input");
+    input.setAttribute("id", "picScrollerEvent");
+    input.onclick = function (){
+        window.removeEventListener("scroll", scroller);
+        input.remove();
+    };
+    document.body.appendChild(input);
 })();
