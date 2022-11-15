@@ -198,6 +198,8 @@ function clear_style() {
         gt_reader: false,
         gt_voicer: false,
         gt_bionic: false,
+        gt_font_weight: 100,
+        gt_font_height: 1,
     });
     updatePage();
 }
