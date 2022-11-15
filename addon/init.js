@@ -135,6 +135,7 @@ function updateUIFromStorage() {
             ruler.checked = data.gt_ruler;
             reader.checked = data.gt_reader;
             voicer.checked = data.gt_voicer;
+            bionic.checked = data.gt_bionic;
 
             IndentGuidesCheckbox.checked = !data.gt_indent_guide;
             insertPreviousValues(data);
@@ -235,6 +236,12 @@ function initEvents() {
         let checked = event.target.checked;
         chrome.storage.sync.set({
             gt_reader: checked
+        });
+    });
+    addEvent(bionic, 'change', function (event) {
+        let checked = event.target.checked;
+        chrome.storage.sync.set({
+            gt_bionic: checked
         });
     });
     addEvent(IndentGuidesCheckbox, 'change', function (event) {

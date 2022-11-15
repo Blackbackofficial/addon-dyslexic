@@ -193,6 +193,7 @@ function clear_style() {
         gt_ruler: false,
         gt_reader: false,
         gt_voicer: false,
+        gt_bionic: false,
     });
     updatePage();
 }
