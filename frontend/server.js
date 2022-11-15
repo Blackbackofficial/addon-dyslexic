@@ -18,11 +18,11 @@ app.get('/', (req, res) => {
   });
 });
 
-// app.get('/hi', (req, res) => {
-//   res.render('hi', {
-//     title: 'About dyslexic',
-//   });
-// });
+app.get('/roadmap', (req, res) => {
+  res.render('roadmap', {
+    title: 'Roadmap',
+  });
+});
 
 app.use(function (err, req, res, next) {
   console.error(err);

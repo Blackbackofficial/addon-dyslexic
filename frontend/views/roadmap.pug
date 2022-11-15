@@ -1,0 +1,49 @@
+extends default
+
+block content
+    div(id="my-roadmap" class="roadmap")
+    script(type="text/javascript").
+        $(document).ready(function () {
+            var events = [
+                {
+                    date: '2 октября',
+                    content: 'Изменение шрифтов <br> и параметров текста'
+                },
+                {
+                    date: '20 октября',
+                    content: 'Сокрытие картинок,<br> подсветка слов'
+                },
+                {
+                    date: '23 октября',
+                    content: 'Режим чтения и озвучки'
+                },
+                {
+                    date: '3 ноября',
+                    content: 'Багфикс'
+                },
+                {
+                    date: '6 ноября',
+                    content: 'UX тестирование<small>Гипотезы для тестирования</small>'
+                },
+                {
+                    date: '17 ноября',
+                    content: 'Функциональное тестирование<small>Работающий MVP (багфикс оставшегося)</small>'
+                },
+                {
+                    date: '1 декабря',
+                    content: 'Публикация в магазине'
+                },
+                {
+                    date: '22 декабря',
+                    content: 'Полностью готовое приложение'
+                },
+            ];
+
+            $('#my-roadmap').roadmap(events, {
+                eventsPerSlide: 8,
+                slide: 1,
+                onBuild: function () {
+                    console.log('onBuild event')
+                }
+            });
+        });
