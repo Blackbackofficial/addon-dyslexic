@@ -152,7 +152,6 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     background: #a1aae5;
 }
 
-
 .picHider:not(:hover) {
     opacity: 0 !important;
 }
