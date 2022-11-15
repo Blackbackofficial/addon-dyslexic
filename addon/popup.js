@@ -11,16 +11,16 @@ const
     showIndentGuides = background.showIndentGuides,
     hideIndentGuides = background.hideIndentGuides,
     fonts = background.fonts,
-/**
- * Popup DOM elements
- */
-fontsDatalist = document.querySelector('#font_family_list'),
-fontsDatalistInput = document.querySelector('#font_family'),
-weightsDatalist = document.querySelector('#fonts_weight_list'),
-weightsDatalistInput = document.querySelector('#fonts_weight'),
-IndentGuidesCheckbox = document.querySelector('#indentGuides');
-fontSelect = document.querySelector('#font_select');
-turnButton = document.querySelector('#disableButton');
+    /**
+     * Popup DOM elements
+     */
+    fontsDatalist = document.querySelector('#font_family_list'),
+    fontsDatalistInput = document.querySelector('#font_family'),
+    weightsDatalist = document.querySelector('#fonts_weight_list'),
+    weightsDatalistInput = document.querySelector('#fonts_weight'),
+    IndentGuidesCheckbox = document.querySelector('#indentGuides');
+    fontSelect = document.querySelector('#font_select');
+    turnButton = document.querySelector('#disableButton');
 
     slider_font_weight = document.querySelector('#slider_font_weight');
     output_font_weight = document.querySelector('#output_font_weight');
@@ -36,7 +36,7 @@ turnButton = document.querySelector('#disableButton');
     voicer = document.querySelector('#voiceMode');
     bionic = document.querySelector('#bionicMode');
     IdEvents = ['gt_font_family', 'gt_font_weight', 'gt_indent_guide', 'gt_font_height',
-        'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader', 'is_work', 'gt_radio_button',
+        'gt_radio_choice', 'gt_ruler', 'gt_voicer', 'gt_reader', 'gt_bionic', 'is_work','gt_radio_button',
         'gt_last_tab_id'
     ];
 
