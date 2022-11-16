@@ -130,7 +130,6 @@ footer {
 }
 
 .small-text {
-  padding-top: 50px;
   font-size: 16px;
   display: block;
   line-height: 30px;
@@ -168,5 +167,5 @@ footer {
 }
 
 .roadmap {
-  padding-top: 180px;
+  padding-top: 100px;
 }

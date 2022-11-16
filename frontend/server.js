@@ -18,9 +18,9 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/roadmap', (req, res) => {
-  res.render('roadmap', {
-    title: 'Roadmap',
+app.get('/instruct', (req, res) => {
+  res.render('instruct', {
+    title: 'Instruct',
   });
 });
 

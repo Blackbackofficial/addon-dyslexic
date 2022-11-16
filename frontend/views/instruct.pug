@@ -1,6 +1,15 @@
 extends default
 
 block content
+    h2.small-text Добавить в браузер из:
+    a(href="/")
+        div.element-1
+            img(class="browser" src="/images/chrome.png")
+            div.browser-text Магазин Google
+    a(href="/")
+        div.element-2
+            img(class="browser" src="/images/firefox.png")
+            div.browser-text Магазин Firefox
     div(id="my-roadmap" class="roadmap")
     script(type="text/javascript").
         $(document).ready(function () {
