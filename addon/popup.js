@@ -193,6 +193,7 @@ function clear_style() {
     ruler.checked = false;
     reader.checked = false;
     voicer.checked = false;
+    bionic.checked = false;
     chrome.storage.sync.set({
         gt_ruler: false,
         gt_reader: false,
