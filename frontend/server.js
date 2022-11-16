@@ -29,6 +29,6 @@ app.use(function (err, req, res, next) {
   res.status(500).send('<h1>Internal Server Error</h1>');
 });
 
-const server = app.listen(process.env.PORT || 3456, () => {
+const server = app.listen(process.env.PORT || 80, () => {
   console.log(`Hacker news server started on port: ${server.address().port}`);
 });
