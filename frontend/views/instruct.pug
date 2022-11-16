@@ -1,58 +1,23 @@
 extends default
 
 block content
-    h2.small-text Добавить в браузер из:
-    a(href="/")
-        div.element-1
-            img(class="browser" src="/images/chrome.png")
-            div.browser-text Магазин Google
-    a(href="/")
-        div.element-2
-            img(class="browser" src="/images/firefox.png")
-            div.browser-text Магазин Firefox
-    div(id="my-roadmap" class="roadmap")
-    script(type="text/javascript").
-        $(document).ready(function () {
-            var events = [
-                {
-                    date: '2 октября',
-                    content: 'Изменение шрифтов <br> и параметров текста'
-                },
-                {
-                    date: '20 октября',
-                    content: 'Сокрытие картинок,<br> подсветка слов'
-                },
-                {
-                    date: '23 октября',
-                    content: 'Режим чтения и озвучки'
-                },
-                {
-                    date: '3 ноября',
-                    content: 'Багфикс'
-                },
-                {
-                    date: '6 ноября',
-                    content: 'UX тестирование<small>Гипотезы для тестирования</small>'
-                },
-                {
-                    date: '17 ноября',
-                    content: 'Функциональное тестирование<small>Работающий MVP (багфикс оставшегося)</small>'
-                },
-                {
-                    date: '1 декабря',
-                    content: 'Публикация в магазине'
-                },
-                {
-                    date: '22 декабря',
-                    content: 'Полностью готовое приложение'
-                },
-            ];
-
-            $('#my-roadmap').roadmap(events, {
-                eventsPerSlide: 8,
-                slide: 1,
-                onBuild: function () {
-                    console.log('onBuild event')
-                }
-            });
-        });
+    main
+        h2 Ручная установка:
+            div.home
+                p.small-text 1. Скачайте архив с плагином
+                    a.link(href="https://dyslexic-helper.ru/dyslexic-helper.zip") по ссылке.
+            div.home
+                p.small-text 2. Распакуйте zip архив в вашей системе.
+            div.home
+                p.small-text 3. Введите в адресной строке вашего браузера:
+                    a.link(href="chrome://extensions/") chrome://extensions/
+                    img.instruct-pic(src="/images/instruct0.png")
+            div.home
+                p.small-text 4. Активируйте режим разработчика.
+                    img.instruct-pic(src="/images/instruct1.png")
+            div.home
+                p.small-text 5. Нажмите "Загрузить распакованное приложение".
+                    img.instruct-pic(src="/images/instruct2.png")
+            div.home
+                p.small-text 6. Выберете папку с распакованным архивом.
+                    img.instruct-pic(src="/images/instruct3.png")

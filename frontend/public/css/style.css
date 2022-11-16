@@ -300,3 +300,11 @@ footer {
 .row_size {
   margin: 4px;
 }
+
+.link {
+  margin-left: 0.5em;
+}
+
+.instruct-pic {
+  width: 40em;
+}
