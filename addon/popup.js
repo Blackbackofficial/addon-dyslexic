@@ -190,10 +190,15 @@ function clear_style() {
         code: "var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].style.removeProperty('line-height');}"
     });
     clearSlider();
+
+    const radioDefault = document.getElementById("2");
+    radioDefault.click();
+
     ruler.checked = false;
     reader.checked = false;
     voicer.checked = false;
     bionic.checked = false;
+
     chrome.storage.sync.set({
         gt_ruler: false,
         gt_reader: false,
