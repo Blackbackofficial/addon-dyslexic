@@ -178,8 +178,8 @@ function updateOutput() {
 
 function clearSlider() {
     slider.value = 1;
-    slider_font_weight.value = 100;
-    output_font_weight.value = 100;
+    slider_font_weight.value = 400;
+    output_font_weight.value = 400;
     output.innerHTML = '1';
 }
 
@@ -197,12 +197,14 @@ function clear_style() {
     voicer.checked = false;
     bionic.checked = false;
 
+    fontSelect.value = 'Default';
+
     chrome.storage.sync.set({
         gt_ruler: false,
         gt_reader: false,
         gt_voicer: false,
         gt_bionic: false,
-        gt_font_weight: 100,
+        gt_font_weight: 400,
         gt_font_height: 1,
     });
     updatePage();

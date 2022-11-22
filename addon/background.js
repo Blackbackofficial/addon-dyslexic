@@ -8,7 +8,7 @@ var
         'OpenDyslexic': 'chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexic.css',
         'SylexiadSansThin': 'chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/SylexiadSansThin.css',
         'SylexiadSerifThin': 'chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/SylexiadSerifThin.css',
-        // 'OpenDyslexic': 'http://localhost:8080/OpenDyslexic.css',
+        'Default': ''
     },
     selectors = {
         code: '*',
@@ -36,7 +36,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, info) {
                     });
                 });
 
-                applyFontFamily(data.gt_font_family);
+                applyFontFamily(data.gt_font_family, fonts[data.gt_font_family]);
                 applyFontWeight(data.gt_font_weight);
                 data.gt_indent_guides ? showIndentGuides() : hideIndentGuides();
             }
@@ -94,16 +94,10 @@ function stylesToCss(styles) {
  * Applies the giving font family to the html
  * @param {String} family
  */
-function applyFontFamily(family) {
+function applyFontFamily(family, link) {
     applyStyles(selectors.code, {
-        'font-family': family
-    });
-    chrome.extension.sendMessage({
-        type: 'loadFont',
-        font: {
-            font: family,
-            link: fonts[family],
-        },
+        'font-family': family,
+        'src': link,
     });
 }
 

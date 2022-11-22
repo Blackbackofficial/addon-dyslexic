@@ -143,7 +143,7 @@ function updateUIFromStorage() {
 
             const isLocalFont = Object.keys(fonts).indexOf(data.gt_font_family) === -1;
             // make the restored font family & weight selected
-            fontsDatalistInput.value = data.gt_font_family;
+            // fontsDatalistInput.value = data.gt_font_family;
             weightsDatalistInput.value = data.gt_font_weight;
             // update indentation guides checkbox
 
@@ -156,15 +156,15 @@ function updateUIFromStorage() {
             insertPreviousValues(data);
             if (!isLocalFont) {
                 // fill the weights dropdown
-                fillWeightsDropdown(fontsDatalistInput.value);
+                // fillWeightsDropdown(fontsDatalistInput.value);
             }
 
             if (ruler.checked) {
                 initRuler();
             }
 
-            applyFontFamily(data.gt_font_family);
-            applyFontWeight(data.gt_font_weight);
+            // applyFontFamily(data.gt_font_family);
+            // applyFontWeight(data.gt_font_weight);
         }
     });
 }
@@ -173,33 +173,20 @@ function updateUIFromStorage() {
  * Binding the necessary events to popup DOM elements
  */
 function initEvents() {
-    addEvent(fontsDatalistInput, 'input', function () {
-        const oldSelectedWeight = weightsDatalistInput.value,
-            fontSelected = fontsDatalistInput.value,
-            isLocalFont = Object.keys(fonts).indexOf(fontSelected) === -1;
-        applyFontFamily(fontSelected);
-        chrome.storage.sync.set({
-            gt_font_family: fontSelected,
-            gt_font_link: fonts[fontSelected]
-        });
-        if (!isLocalFont) {
-            fillWeightsDropdown(fontsDatalistInput.value);
-            updateSelectedWeight(oldSelectedWeight);
-        }
-    });
     document.getElementById("font_select").addEventListener('change', (event) => {
         const oldSelectedWeight = weightsDatalistInput.value,
             fontSelected = event.target.value,
             isLocalFont = Object.keys(fonts).indexOf(fontSelected) === -1;
-        applyFontFamily(fontSelected);
+        applyFontFamily(fontSelected, fonts[fontSelected]);
         chrome.storage.sync.set({
             gt_font_family: fontSelected,
             gt_font_link: fonts[fontSelected]
         });
         if (!isLocalFont) {
-            fillWeightsDropdown(fontsDatalistInput.value);
+            // fillWeightsDropdown(fontsDatalistInput.value);
             updateSelectedWeight(oldSelectedWeight);
         }
+        updatePage();
     });
     addEvent(weightsDatalistInput, 'input', function () {
         let selectedWeight = weightsDatalistInput.value;
