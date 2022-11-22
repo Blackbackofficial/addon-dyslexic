@@ -69,6 +69,10 @@ function initReader() {
         chrome.tabs.executeScript({
             file: 'inject-reader.js'
         });
+    } else {
+        chrome.tabs.executeScript({
+            file: 'inject-reader-closer.js'
+        });
     }
 }
 

@@ -247,10 +247,10 @@ h5.dr-popup--label{
 }
 .theme-yellow{
     color:#303030;
-    background-color: #cec3c3;
+    background-color: #c3cec9;
 }
 .theme-yellow h1,.theme-yellow h2,.theme-yellow h3,.theme-yellow h4,.theme-yellow h5,.theme-yellow h6,.theme-yellow p{
-    color:#303030!important
+    color:#303030 !important
 }
 .theme-dark{
     color:#fff;
@@ -324,4 +324,10 @@ img.dr-icons{
 .dr-speed--toggle.dr-active{
     display: none;
     background:rgba(78,125,232,.32)
+}
+
+
+.rr-theme--change {
+    width: 30px !important;
+    height: 30px !important;
 }
