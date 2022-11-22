@@ -17,7 +17,8 @@
     }
 
     const btn = document.getElementById('picScrollerEvent');
-    btn.click();
-
+    if (btn) {
+        btn.click();
+    }
 
 }())

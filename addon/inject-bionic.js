@@ -12,6 +12,7 @@
             var span = document.createElement("span");
             //css стили?
             span.style.fontWeight = "bolder";
+            span.setAttribute('style', 'bolder !important');
             span.appendChild(document.createTextNode(text));
 
             node.parentNode.insertBefore(span, node);

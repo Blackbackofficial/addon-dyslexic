@@ -385,3 +385,38 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
 .SylexiadSerifThin {
     font-family: 'SylexiadSerifThin' !important;
 }
+
+.helloGo-100 {
+    font-weight: 100 !important;
+    /*color: red !important;*/
+}
+
+.helloGo-200 {
+    font-weight: 200 !important;
+/*color: #ff8000 !important;
+}
+
+.helloGo-300 {
+font-weight: 300 !important;
+/*color: #fffb14 !important */;
+}
+
+.helloGo-400 {
+font-weight: 400 !important;
+/*color: #67fc00 !important*/;
+}
+
+.helloGo-500 {
+font-weight: 500 !important;
+/*color: #00c4ff !important*/;
+}
+
+.helloGo-600 {
+font-weight: 600 !important;
+/*color: #003cff !important*/;
+}
+
+.helloGo-700 {
+font-weight: 700 !important;
+/*color: #7300ff !important*/;
+}

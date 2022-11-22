@@ -4,8 +4,6 @@
 const
     background = chrome.extension.getBackgroundPage(),
     addEvent = background.addEvent,
-    applyStyles = background.applyStyles,
-    selectors = background.selectors,
     applyFontFamily = background.applyFontFamily,
     applyFontWeight = background.applyFontWeight,
     showIndentGuides = background.showIndentGuides,
@@ -218,10 +216,26 @@ function slider_line_height() {
 }
 
 function slider_line_weight() {
+
     chrome.tabs.executeScript(null, {
-        code: "var paras = document.getElementsByTagName('p');for (var i = 0; i < paras.length; i++) {paras[i].setAttribute('style', 'line-weight:" +
-            slider_font_weight.value + " !important');}"
+        code: `var paras = document.getElementsByTagName('*')
+
+        for (let i = 0; i < paras.length; i++) {
+            var text = paras[i].innerHTML;
+            var cEng =  /[\\p{Letter}\\p{Mark}]/u.test(text);
+            if (cEng) {
+                const classNames = paras[i].className.split(' ');
+                for (let j = 0; j < classNames.length; j++) {
+                  let cl = classNames[j];
+                 if (cl.includes('helloGo')) {
+                        paras[i].classList.remove(cl);
+                    }
+                }
+                paras[i].classList.add('helloGo-`+slider_font_weight.value+`')
+            }
+        }`
     });
+
 }
 
 function changeHandler() {
