@@ -308,3 +308,46 @@ footer {
 .instruct-pic {
   width: 40em;
 }
+
+.custom-select {
+  font-size: 1.8rem;
+  -webkit-appearance: none;
+  white-space: nowrap;
+  -moz-appearance: none;
+  margin-top: -7px;
+  margin-left: 43px;
+  width: 174px;
+  padding: 6px 0 6px 12px;
+  background: #d1c9df no-repeat right 16px center;
+  transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
+  border: 1px solid #7853ae;
+  border-radius: 13px;
+}
+.custom-select:hover {
+  border: 1px solid #999;
+}
+.custom-select:focus {
+  border: 1px solid #999;
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+  outline: none;
+}
+/* remove default arrow in IE */
+select::-ms-expand {
+  display:none;
+}
+
+h1 {
+  font-family: Merriweather, serif;
+}
+a {
+  color: #333;
+  font-weight: 700;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.custom-select {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1rem;
+}
