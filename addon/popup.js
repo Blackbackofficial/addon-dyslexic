@@ -197,7 +197,13 @@ function clear_style() {
     voicer.checked = false;
     bionic.checked = false;
 
-    fontSelect.value = 'Default';
+    let fontSelected = 'Default';
+    fontSelect.value = fontSelected;
+    applyFontFamily(fontSelected, fonts[fontSelected])
+    chrome.storage.sync.set({
+        gt_font_family: fontSelected,
+        gt_font_link: fonts[fontSelected]
+    });
 
     chrome.storage.sync.set({
         gt_ruler: false,

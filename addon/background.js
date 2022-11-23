@@ -84,7 +84,7 @@ function stylesToCss(styles) {
         if (!Object.prototype.hasOwnProperty.call(styles, property) || !value) {
             continue;
         }
-        css += `${property}: ${value} !important;`;
+        css += `${property}: ${value};`;
     }
 
     return css;
