@@ -17,6 +17,13 @@ function changeFont() {
     } else if (selectedValue = 4) {
         font = "OpenDyslexic";
         document.getElementById("main").style.fontFamily = "OpenDyslexic, sans-serif";
+        document.getElementById("main").style.fontWeight = "700";
+        var elems = document.getElementsByTagName("*");
+        let i;
+        for(i = 0; i < elems.length; i++) {
+            console.log(elems[i].style.fontWeight)
+            elems[i].style.fontWeight = "700";
+        }
     } else if (selectedValue = 5) {
         font = "SylexiadSansThin";
         document.getElementById("main").style.fontFamily = "SylexiadSansThin, sans-serif";
