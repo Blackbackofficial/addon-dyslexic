@@ -1,3 +1,21 @@
+/* FONTS */
+@font-face {
+  font-family: 'PT Mono';
+  src: url(https://fonts.googleapis.com/css2?family=PT+Mono&display=swap);
+}
+@font-face {
+  font-family: 'Atma';
+  src: url(https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap);
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url(../fonts/OpenDyslexic.css);
+}
+@font-face {
+  font-family: 'SylexiadSansThin';
+  src: url(../fonts/SylexiadSansThin.css);
+}
+
 #blurry-filter {
   width: 100%;
   height: 9rem;
