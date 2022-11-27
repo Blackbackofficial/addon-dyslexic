@@ -5,27 +5,124 @@ block content
     div.home
       h1 Наслаждайтесь интернет-серфингом и легкостью чтения
       a.small-text Прочитайте весь текстовый контент в наиболее приятной форме. Ты можешь выбрать шрифты, цвета, закрасить картинки. Ничто не должно тебя отвлекать, максимальная концентрация.
-      h2.small-text Добавить в браузер из:
-      a(href="/")
-        div.element-1
-          img(class="browser" src="/images/chrome.png")
-          div.browser-text Магазин Google
-      a(href="/")
-        div.element-2
-          img(class="browser" src="/images/firefox.png")
-          div.browser-text Магазин Firefox
     div.home
       img(src="/images/undraw_wireframing_n.svg" style="height: 40%; float: right; padding-top: 33px;")
 
-    div.home(style="margin-top: -150px;")
+    div.home(style="margin-top: -360px;")
       img(src="/images/internet.svg" style="width: 86%; float: left; margin-top: -52px;")
-    div.home(style="margin-top: -150px;")
+    div.home(style="margin-top: -360px;")
       h1 Интернет по-вашему, сфокусировано на тесте
       a.small-text Режим чтения облегчает чтение и устраняет все помехи. Какую бы страницу вы ни читали; каждая статья выглядит одинаково - именно так, как вы этого хотите. Он запускается/открывается автоматически или по нажатию на плагин.
 
-    div.home(style="margin-top: 94px;")
+    div.home(style="margin-top: 80px;")
       h1 Для тех, кто любит много читать
       a.small-text Dyslexic-add может иметь несколько необычное название, но в ней также есть все необходимые инструменты для любого стиля чтения. Особенно для тех, у кого дислексия, трудности с чтением, концентрацией или вниманием, а также для тех, кто просто хочет адаптировать текст так, как ему нравится.
 
-    div.home(style="margin-top: 94px;")
+    div.home(style="margin-top: 80px;")
       img(src="/images/woman_read_book.png" style="width: 95%; float: right; margin-top: -12px;")
+
+  div(id="my-roadmap" class="roadmap")
+    script(type="text/javascript").
+      $(document).ready(function () {
+        var events = [
+          {
+            date: '2 октября',
+            content: 'Изменение шрифтов <br> и параметров текста'
+          },
+          {
+            date: '20 октября',
+            content: 'Сокрытие картинок,<br> подсветка слов'
+          },
+          {
+            date: '23 октября',
+            content: 'Режим чтения и озвучки'
+          },
+          {
+            date: '3 ноября',
+            content: 'Багфикс'
+          },
+          {
+            date: '6 ноября',
+            content: 'UX тестирование<small>Гипотезы для тестирования</small>'
+          },
+          {
+            date: '17 ноября',
+            content: 'Функциональное тестирование<small>Работающий MVP (багфикс оставшегося)</small>'
+          },
+          {
+            date: '1 декабря',
+            content: 'Публикация в магазине'
+          },
+          {
+            date: '22 декабря',
+            content: 'Полностью готовое <br> приложение'
+          },
+        ];
+
+        $('#my-roadmap').roadmap(events, {
+          eventsPerSlide: 8,
+          slide: 1,
+          onBuild: function () {
+            console.log('onBuild event')
+          }
+        });
+      });
+  div(style="margin-top: 70px;")
+    .main-container
+      .heading
+        h1.heading__title Наши возможности:
+      .cards
+        .card.card-1
+          .card__icon
+            i.fa.fa-bolt
+          h2.card__title Шрифты <br><br>
+            small Возможность выбрать шрифт подходящий именно вам и настроить его
+          p.card__apply
+            a.card__link(href='instruct')
+              | Доступно сейчас
+              i.fa.fa-arrow-right.row_size
+        .card.card-2
+          .card__icon
+            i.fa.fa-bolt
+          h2.card__title Режим чтения <br><br>
+            small Чтобы вы не отвлекались от избыточной информации
+          p.card__apply
+            a.card__link(href='instruct')
+              | Доступно сейчас
+              i.fa.fa-arrow-right.row_size
+        .card.card-3
+          .card__icon
+            i.fa.fa-bolt
+          h2.card__title Озвучка текста <br><br>
+            small Проговаривание текста, если читать не хочется
+          p.card__apply
+            a.card__link(href='instruct')
+              | Доступно сейчас
+              i.fa.fa-arrow-right.row_size
+        .card.card-4
+          .card__icon
+            i.fa.fa-bolt
+          h2.card__title Сохранение интерфейса <br><br>
+            small Меняем шрифты без изменения структуры сайта
+          p.card__apply
+            a.card__link(href='instruct')
+              | Доступно сейчас
+              i.fa.fa-arrow-right.row_size
+        .card.card-5
+          .card__icon
+            i.fa.fa-bolt
+          h2.card__title Лишний контент <br><br>
+            small Уберите картинки с сайта чтобы вас ничего не отвлекало
+          p.card__apply
+            a.card__link(href='instruct')
+              | Доступно сейчас
+              i.fa.fa-arrow-right.row_size
+        .card.card-1
+          .card__icon
+            i.fa.fa-bolt
+          h2.card__title Линейка <br><br>
+            small Используйте линейку чтобы сфокусироваться на определенной строке
+          p.card__apply
+            a.card__link(href='instruct')
+              | Доступно сейчас
+              i.fa.fa-arrow-right.row_size

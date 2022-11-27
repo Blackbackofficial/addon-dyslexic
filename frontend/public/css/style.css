@@ -1,3 +1,21 @@
+/* FONTS */
+@font-face {
+  font-family: 'PT Mono';
+  src: url(https://fonts.googleapis.com/css2?family=PT+Mono&display=swap);
+}
+@font-face {
+  font-family: 'Atma';
+  src: url(https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap);
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url(../fonts/OpenDyslexic.css);
+}
+@font-face {
+  font-family: 'SylexiadSansThin';
+  src: url(../fonts/SylexiadSansThin.css);
+}
+
 #blurry-filter {
   width: 100%;
   height: 9rem;
@@ -130,7 +148,6 @@ footer {
 }
 
 .small-text {
-  padding-top: 50px;
   font-size: 16px;
   display: block;
   line-height: 30px;
@@ -165,4 +182,190 @@ footer {
   height: 100px;
   bottom: 0;
   overflow: hidden;
+}
+
+.roadmap {
+  padding-top: 100px;
+}
+
+.main-container {
+  padding: 30px;
+}
+
+/* HEADING */
+
+.heading {
+  text-align: center;
+}
+
+.heading__title {
+  font-weight: 600;
+}
+
+.heading__credits {
+  margin: 10px 0px;
+  color: #888888;
+  font-size: 25px;
+  transition: all 0.5s;
+}
+
+.heading__link {
+  text-decoration: none;
+}
+
+.heading__credits .heading__link {
+  color: inherit;
+}
+
+/* CARDS */
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  margin: 20px;
+  padding: 20px;
+  width: 380px;
+  min-height: 200px;
+  display: grid;
+  grid-template-rows: 20px 50px 1fr 50px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
+}
+
+.card__link,
+.card__icon {
+  position: relative;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.card__link::after {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  content: "";
+  width: 0%;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all 0.5s;
+}
+
+.card__link:hover::after {
+  width: 100%;
+}
+
+.card__exit {
+  grid-row: 1/2;
+  justify-self: end;
+}
+
+.card__icon {
+  grid-row: 2/3;
+  font-size: 30px;
+}
+
+.card__title {
+  grid-row: 3/4;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.card__apply {
+  grid-row: 4/5;
+  align-self: center;
+}
+
+/* CARD BACKGROUNDS */
+
+.card-1 {
+  background: radial-gradient(#1fe4f5, #3fbafe);
+}
+
+.card-2 {
+  background: radial-gradient(#fbc1cc, #fa99b2);
+}
+
+.card-3 {
+  background: radial-gradient(#76b2fe, #b69efe);
+}
+
+.card-4 {
+  background: radial-gradient(#60d7a7, #5abaaf);
+}
+
+.card-5 {
+  background: radial-gradient(#f588d8, #c0a3e5);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1600px) {
+  .cards {
+    justify-content: center;
+  }
+}
+
+.row_size {
+  margin: 4px;
+}
+
+.link {
+  margin-left: 0.5em;
+}
+
+.instruct-pic {
+  width: 40em;
+}
+
+.custom-select {
+  font-size: 1.8rem;
+  -webkit-appearance: none;
+  white-space: nowrap;
+  -moz-appearance: none;
+  margin-top: -7px;
+  margin-left: 43px;
+  width: 174px;
+  padding: 6px 0 6px 12px;
+  background: #d1c9df no-repeat right 16px center;
+  transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
+  border: 1px solid #7853ae;
+  border-radius: 13px;
+}
+.custom-select:hover {
+  border: 1px solid #999;
+}
+.custom-select:focus {
+  border: 1px solid #999;
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+  outline: none;
+}
+/* remove default arrow in IE */
+select::-ms-expand {
+  display:none;
+}
+
+h1 {
+  font-family: Merriweather, serif;
+}
+a {
+  color: #333;
+  font-weight: 700;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.custom-select {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1rem;
 }
