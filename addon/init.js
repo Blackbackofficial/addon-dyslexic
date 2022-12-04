@@ -105,18 +105,7 @@ function initVoicer() {
 }
 
 function initBionic() {
-    chrome.tabs.query({
-        active: true,
-        currentWindow: true
-    }, function (tabs) {
-        let activeTab = tabs[0];
-        let activeTabId = activeTab.id; // or do whatever you need
-        chrome.tabs.executeScript(activeTabId, {
-            file: 'inject-font-w-remover.js'
-        });
-    });
-
-    //if (bionic.checked) {
+    if (bionic.checked) {
         // to save a state
         chrome.tabs.query({
             active: true,
@@ -128,7 +117,18 @@ function initBionic() {
                 file: 'inject-bionic.js'
             });
         })
-   // }
+   } else {
+        chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        }, function (tabs) {
+            let activeTab = tabs[0];
+            let activeTabId = activeTab.id; // or do whatever you need
+            chrome.tabs.executeScript(activeTabId, {
+                file: 'inject-remove-font.js'
+            });
+        });
+    }
 }
 
 /**

@@ -1,6 +1,13 @@
 (function () {
     'use strict';
 
+    function checkBolderedText() {
+        let spans = document.getElementsByClassName('custom-bolder');
+        for (let i = 0; i < spans.length; i++) {
+            spans[i].setAttribute('style', 'font-weight: bolder !important;');
+        }
+    }
+
     // конфиг
     var minTextLength = 10;
     var minWordLength = 4;
@@ -12,9 +19,9 @@
             var span = document.createElement("span");
             //css стили?
             span.style.fontWeight = "bolder";
-            span.setAttribute('style', 'bolder !important');
+            span.setAttribute('style', 'font-weight: bolder !important;');
             span.appendChild(document.createTextNode(text));
-
+            span.classList.add('custom-bolder')
             node.parentNode.insertBefore(span, node);
         }
         else {
@@ -73,5 +80,5 @@
 
 
     processNode(document.getRootNode());
-
+    checkBolderedText();
 })();
