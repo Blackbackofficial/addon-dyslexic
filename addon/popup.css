@@ -235,7 +235,7 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     }
     input[type='checkbox']:not(.switch), input[type='radio']:not(.switch) {
         width: 19px;
-        margin: -1px 4px 10px 10px;
+        margin: -2px 4px 10px 10px;
     }
     input[type='checkbox']:not(.switch):after, input[type='radio']:not(.switch):after {
         opacity: var(--o, 0);

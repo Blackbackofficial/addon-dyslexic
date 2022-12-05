@@ -3,6 +3,7 @@
 
 <head class="all-item">
     <title>Popup</title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="./popup.css" />
 </head>
 
@@ -32,7 +33,7 @@
         <datalist id="fonts_weight_list">
         </datalist>
     </div>
-    <p style="font-weight: bold; padding-left: 2em">Font-weight</p>
+    <p style="font-weight: bold; padding-left: 2em; font-size: 14px;">Толщина шрифта</p>
     <input type="range" min="100" max="700" value="100" id="slider_font_weight" step="100" list="slider_settings_font_weight">
     <datalist id="slider_settings_font_weight">
         <option>100</option>
@@ -48,14 +49,14 @@
 
     <div class="checkbox-field all-item display-special">
         <input type="checkbox" id="indentGuides" class="control" />
-        <label for="indentGuides" class="label">Hide indentation guides</label>
+        <label for="indentGuides" class="label">Скрыть направляющие отступы</label>
     </div>
 </form>
 
 <!-- new func -->
 
 <div class="content">
-    <p style="font-weight: bold; padding-left: 2em">Font-height</p>
+    <p style="font-weight: bold; padding-left: 2em; font-size: 14px;">Высота шрифта</p>
     <input type="range" min="1" max="4" value="1" id="slider" step="0.25" list="slider_settings">
     <datalist id="slider_settings">
         <option>1</option>
@@ -74,42 +75,35 @@
     </datalist>
 
     <output for="slider" id="output">1</output>
-
-    <div style="display: none;">
-        <button id="line_height_1_0" class="button-class-1 button-class-2">1</button>
-        <button id="line_height_1_5" class="button-class-1 button-class-2">1.5</button>
-        <button id="line_height_2_0" class="button-class-1 button-class-2">2lineheight</button>
-        <p>Learn more at <a href="https://rawgit.com/" target="_blank">RawGit.com</a></p>
-    </div>
 </div>
 <!-- new func -->
 
-<div id="pic_hider" class="display-modes">
-    <input type="radio" name="pic" id="1" value="1">Hide
-    <input type="radio" name="pic" id="2" value="2">Default
-    <input type="radio" name="pic" id="3" value="3">Paint
+<div id="pic_hider" class="display-modes" style="font-size: 12px; font-weight: 600;">
+    <input type="radio" name="pic" id="1" value="1">Скрыть
+    <input type="radio" name="pic" id="2" value="2">Обычно
+    <input type="radio" name="pic" id="3" value="3">Окрасить
 </div>
 
 <div class="checkbox-field select-font-pos">
     <input id="rulerGuides" type="checkbox" class="switch">
-    <label for="rulerGuides" class="label">Ruler mode</label>
+    <label for="rulerGuides" class="label">Режим линейки</label>
 </div>
 <div class="checkbox-field select-font-pos">
     <input id="voiceMode" type="checkbox" class="switch">
-    <label for="voiceMode" class="label">Voice mode</label>
+    <label for="voiceMode" class="label">Режим озвучки</label>
 </div>
 <div class="checkbox-field select-font-pos">
     <input id="readerMode" type="checkbox" class="switch">
-    <label for="readerMode" class="label">Reader mode</label>
+    <label for="readerMode" class="label">Режим чтения</label>
 </div>
 
 <div class="checkbox-field select-font-pos">
     <input id="bionicMode" type="checkbox" class="switch">
-    <label for="bionicMode" class="label">Bionic Mode</label>
+    <label for="bionicMode" class="label">Бионик режим</label>
 </div>
 
 <p class="text_center">
-    <button id="clear_btn" class="button-class-1 button-class-2">Restore default</button>
+    <button id="clear_btn" class="button-class-1 button-class-2">По умолчанию</button>
 </p>
 
 <script src="./popup.js"></script>
