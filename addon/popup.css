@@ -7,7 +7,6 @@
 .form-class{
     width: 270px;
     background-color: #fff;
-    padding-bottom: 15px;
 }
 
 .title {
@@ -16,7 +15,17 @@
     text-transform: uppercase;
     margin-bottom: 15px;
     padding-left: 8px;
-    padding-bottom: 18px;
+}
+
+.title-2 {
+    text-align: left;
+    float: left;
+    padding-left: 8px;
+    margin: 0 0;
+}
+
+.title-2 .tooltip{
+    margin-top: 0;
 }
 
 .title img.logo {
@@ -235,7 +244,7 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     }
     input[type='checkbox']:not(.switch), input[type='radio']:not(.switch) {
         width: 19px;
-        margin: -2px 4px 10px 10px;
+        margin: -1px 4px 10px 10px;
     }
     input[type='checkbox']:not(.switch):after, input[type='radio']:not(.switch):after {
         opacity: var(--o, 0);
@@ -324,7 +333,7 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
-  
+
 .bn1-hover, .bn1-hover:hover {
     background-position: 100% 0;
     moz-transition: all .4s ease-in-out;
@@ -332,11 +341,11 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
-  
+
 .bn1-hover, .bn1-hover:focus {
     outline: none;
 }
-  
+
 .bn1-hover.bn1 {
     background-image: linear-gradient(to right, #38c023, #dddddd, #23a931, #3375a9);
 }
@@ -367,7 +376,7 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
 }
 
 .Atma {
-   font-family:  'Atma' !important ;
+    font-family:  'Atma' !important ;
 }
 
 .OpenDyslexic {
@@ -393,30 +402,116 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
 
 .helloGo-200 {
     font-weight: 200 !important;
-/*color: #ff8000 !important;
-}
+    /*color: #ff8000 !important;
+    }
 
-.helloGo-300 {
-font-weight: 300 !important;
-/*color: #fffb14 !important */;
+    .helloGo-300 {
+    font-weight: 300 !important;
+    /*color: #fffb14 !important */;
 }
 
 .helloGo-400 {
-font-weight: 400 !important;
-/*color: #67fc00 !important*/;
+    font-weight: 400 !important;
+    /*color: #67fc00 !important*/;
 }
 
 .helloGo-500 {
-font-weight: 500 !important;
-/*color: #00c4ff !important*/;
+    font-weight: 500 !important;
+    /*color: #00c4ff !important*/;
 }
 
 .helloGo-600 {
-font-weight: 600 !important;
-/*color: #003cff !important*/;
+    font-weight: 600 !important;
+    /*color: #003cff !important*/;
 }
 
 .helloGo-700 {
-font-weight: 700 !important;
-/*color: #7300ff !important*/;
+    font-weight: 700 !important;
+    /*color: #7300ff !important*/;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    border-radius: 6px;
+    border-color: #eedede;
+    padding: 0 0;
+    background-color: rgba(187, 193, 225, 0.86);
+    margin-left: 5px;
+}
+
+.tooltip .tooltiptext, .tooltip .tooltiptext-left, .tooltip .tooltiptext-up {
+    visibility: hidden;
+    width: 120px;
+    background-color: #7d82a8;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    position: absolute;
+    z-index: 1;
+
+
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltip:hover .tooltiptext-left {
+    visibility: visible;
+}
+
+.tooltip:hover .tooltiptext-up {
+    visibility: visible;
+}
+
+
+
+.tooltip .tooltiptext {
+    top: -5px;
+    left: 105%;
+}
+
+.tooltip .tooltiptext-left {
+    top: -5px;
+    right: 105%;
+}
+
+.tooltip .tooltiptext-up {
+    width: 120px;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.button-like {
+    display: flow;
+    position: center;
+    appearance: auto;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: buttonface;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-image: initial;
+}
+
+.body {
+    width: 320px;
 }
