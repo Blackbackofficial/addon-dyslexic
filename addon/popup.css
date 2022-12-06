@@ -18,10 +18,15 @@
     padding-bottom: 18px;
 }
 
+.bold-title {
+    font-weight: bold;
+    font-size: 13px;
+}
+
 .title-2 {
     text-align: left;
     float: left;
-    padding-left: 8px;
+    padding-left: 15px;
     margin: 0 0;
 }
 

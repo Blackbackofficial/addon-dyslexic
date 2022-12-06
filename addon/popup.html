@@ -1,53 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head class="all-item">
     <title>Popup</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="./popup.css" />
 </head>
-
 <body class=".body">
 <form class="form-class all-item">
     <h2 class="title">
         <a style="padding-left: 50px;">Dyslexic Helper</a>
     </h2>
-
     <div>
-        <p style="font-weight: bold; padding-left: 2em" class="title-2">Выбор шрифта</p>
+        <p class="bold-title title-2">Выбор шрифта</p>
         <p style="float: left; margin-top: 0"  class="tooltip"> ?
             <span class="tooltiptext">Заменяет шрифт страницы на dyslexic-дружелюбный</span>
         </p>
     </div>
-
     <button class="button button1 bn632-hover bn27" id="disableButton" hidden="true" style="display:none">Error</button>
     <br id="br1" style="display:none">
     <br id="br2" style="display:none">
-
     <form class="form-class all-item">
         <p class="input-field"><select class="control" id="font_select">
-        </select></p>
+        </select>
+        </p>
     </form>
-
     <div class="input-field all-item display-special">
         <input id="font_family" class="control" list="font_family_list">
         <datalist id="font_family_list">
         </datalist>
     </div>
-
     <div class="input-field all-item display-special">
         <input id="fonts_weight" class="control" list="fonts_weight_list">
         <datalist id="fonts_weight_list">
         </datalist>
     </div>
-
     <div>
-        <p style="font-weight: bold; padding-left: 2em" class="title-2">Толщина шрифта</p>
+        <p class="title-2 bold-title">Толщина шрифта</p>
         <p style="float: left; margin-top: 0"  class="tooltip"> ?
             <span class="tooltiptext">Изменяет начертание и насыщенность шрифта</span>
         </p>
     </div>
-
     <input type="range" min="100" max="700" value="100" id="slider_font_weight" step="100" list="slider_settings_font_weight">
     <datalist id="slider_settings_font_weight">
         <option>100</option>
@@ -58,73 +49,65 @@
         <option>600</option>
         <option>700</option>
     </datalist>
-
     <output for="slider_font_weight" id="output_font_weight">100</output>
-
     <div class="checkbox-field all-item display-special">
         <input type="checkbox" id="indentGuides" class="control" />
         <label for="indentGuides" class="label">Скрыть направляющие отступы</label>
     </div>
 </form>
-
 <!-- new func -->
-
 <div class="content">
-
     <div>
-        <p style="font-weight: bold; padding-left: 2em" class="title-2">Высота между строками</p>
-        <p style="float: left; margin-top: 0"  class="tooltip"> ?
-            <span class="tooltiptext-left">Изменяет расстояние между строками текста</span>
-        </p>
-    </div>
-    <input type="range" min="1" max="4" value="1" id="slider" step="0.25" list="slider_settings">
-    <datalist id="slider_settings">
-        <option>1</option>
-        <option>1.25</option>
-        <option>1.5</option>
-        <option>1.75</option>
-        <option>2</option>
-        <option>2.25</option>
-        <option>2.5</option>
-        <option>2.75</option>
-        <option>3</option>
-        <option>3.25</option>
-        <option>3.5</option>
-        <option>3.75</option>
-        <option>4</option>
-    </datalist>
-
-    <output for="slider" id="output">1</output>
+    <p class="title-2 bold-title">Высота между строками</p>
+    <p style="float: left; margin-top: 0"  class="tooltip"> ?
+        <span class="tooltiptext-left">Изменяет расстояние между строками текста</span>
+    </p>
+</div>
+<input type="range" min="1" max="4" value="1" id="slider" step="0.25" list="slider_settings">
+<datalist id="slider_settings">
+    <option>1</option>
+    <option>1.25</option>
+    <option>1.5</option>
+    <option>1.75</option>
+    <option>2</option>
+    <option>2.25</option>
+    <option>2.5</option>
+    <option>2.75</option>
+    <option>3</option>
+    <option>3.25</option>
+    <option>3.5</option>
+    <option>3.75</option>
+    <option>4</option>
+</datalist>
+<output for="slider" id="output">1</output>
 </div>
 <!-- new func -->
-
-
 <div class="content">
-    <div>
-        <p style="font-weight: bold; padding-left: 2em" class="title-2">Режим работы с изображениями</p>
+    <div style="padding-top: 12px;">
+        <p class="title-2 bold-title">Работа с изображениями</p>
         <p style="float: left; margin-top: 0"  class="tooltip"> ?
             <span class="tooltiptext-left">Изменяет отображение изображений на странице</span>
         </p>
     </div>
 </div>
+<br>
+<br>
 <div id="pic_hider" class="display-modes">
     <input type="radio" name="pic" id="1" value="1">Скрытие
-    <div class="tooltip">?
+    <div class="tooltip" style="margin-left: 0;">?
         <span class="tooltiptext">Скрывает изображения вне фокуса. Отображает их при наведении.</span>
     </div>
-    <input type="radio" name="pic" id="2" value="2">Дефолт
-    <div class="tooltip">?
+    <input type="radio" name="pic" id="2" value="2">По умолчанию
+    <div class="tooltip" style="margin-left: 0;">?
         <span class="tooltiptext-left">Отображение по умолчанию.</span>
     </div>
 </div>
-
 <div id="pic_hider" class="display-modes" style="margin-top: -0.5em;">
     <input type="radio" name="pic" id="3" value="3">Закраска
-    <div class="tooltip">?
+    <div class="tooltip" style="margin-left: 0;">?
         <span class="tooltiptext-left">Закрашивает изображение в один тон. Отображает их при наведении.</span>
     </div>
 </div>
-
 <div class="checkbox-field select-font-pos">
     <input id="rulerGuides" type="checkbox" class="switch">
     <label for="rulerGuides" class="label">Режим линейки</label>
@@ -146,7 +129,6 @@
         <span class="tooltiptext-left">Включает режим чтения</span>
     </div>
 </div>
-
 <div class="checkbox-field select-font-pos">
     <input id="bionicMode" type="checkbox" class="switch">
     <label for="bionicMode" class="label">Бионик чтение</label>
@@ -154,7 +136,6 @@
         <span class="tooltiptext-left">Включает режим бионического скорочтения</span>
     </div>
 </div>
-
 <p class="text_center">
     <button id="clear_btn" class="button-class-1 button-class-2 button-like ">
         По умолчанию
@@ -163,10 +144,7 @@
         </a>
     </button>
 </p>
-
-
 <script src="./popup.js"></script>
 <script src="./init.js"></script>
 </body>
-
 </html>
