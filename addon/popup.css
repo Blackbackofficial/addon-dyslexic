@@ -433,7 +433,6 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
     border-radius: 6px;
     border-color: #eedede;
     padding: 0 2px;
@@ -500,7 +499,6 @@ input[type="range"] {width:80%;     padding-left: 10px; margin-left:10px;display
     text-transform: none;
     text-indent: 0px;
     text-shadow: none;
-    display: inline-block;
     text-align: center;
     align-items: flex-start;
     cursor: default;
