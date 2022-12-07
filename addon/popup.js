@@ -28,7 +28,7 @@ const
     output = document.querySelector('#output');
     clear_btn = document.querySelector('#clear_btn');
     radiohld = document.querySelector('#pic_hider');
-    radios = document.querySelectorAll('input[type=radio][name="mode"]');
+    radios = document.querySelectorAll('input[type=radio][name="pic"]');
     ruler = document.querySelector('#rulerGuides');
     reader = document.querySelector('#readerMode');
     voicer = document.querySelector('#voiceMode');
