@@ -1,46 +1,37 @@
 /* latin-ext */
 @font-face {
-    font-family: 'OpenDyslexic';
+    font-family: 'OpenDyslexicAlta';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexic-Bold.otf);
+    src: url(chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexicAlta-Bold.otf);
     unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-/* latin-ext */
-@font-face {
-    font-family: 'OpenDyslexic';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexic3-Bold.ttf);
-    unicode-range: U+0410, U+0412, U+0415, U+0401, U+0418, U+041C, U+041D, U+041E, U+0420, U+0421, U+0422, U+0425, U+0427, U+042F, U+0401,
-    U+0430, U+0432, U+0435, U+0451, U+0437, U+043E, U+0440, U+0441, U+0443, U+0445, U+044F;
-}
+
 /* latin */
 @font-face {
-    font-family: 'OpenDyslexic';
+    font-family: 'OpenDyslexicAlta';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexic-Bold.otf);
+        src: url(chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexicAlta-Bold.otf);
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin-ext */
 @font-face {
-    font-family: 'OpenDyslexic';
+    font-family: 'OpenDyslexicAlta';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexic-Bold.otf);
+        src: url(chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexicAlta-Bold.otf);
     /*unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;*/
 }
 /* latin */
 @font-face {
-    font-family: 'OpenDyslexic';
+    font-family: 'OpenDyslexicAlta';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexic-Bold.otf);
+        src: url(chrome-extension://nlglaolkmemefakgfhngpnhljanellie/fonts/OpenDyslexicAlta-Bold.otf);
     /*unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;*/
 }

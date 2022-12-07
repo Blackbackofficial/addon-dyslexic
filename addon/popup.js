@@ -65,6 +65,7 @@ function addSelectsFonts() {
 
         createOption(fontName, fontName, fontSelect, true);
     }
+    fontSelect.value = 'Default';
 }
 
 function insertPreviousValues(data) {
